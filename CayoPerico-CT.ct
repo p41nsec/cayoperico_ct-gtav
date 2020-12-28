@@ -1,0 +1,3786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Activate Table"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>0EB627</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+if addr==nil then
+if not openProcess('GTA5.exe') then sleep(250) if getOpenedProcessID()==0 then getAutoAttachList().add('GTA5.exe') sleep(250) end end
+autoAssemble([[
+aobscanmodule(WorldPTR,GTA5.exe,48 8B 05 ? ? ? ? 45 ? ? ? ? 48 8B 48 08 48 85 C9 74 07)
+registersymbol(WorldPTR)
+aobscanmodule(BlipPTR,GTA5.exe,4C 8D 05 ? ? ? ? 0F B7 C1)
+registersymbol(BlipPTR)
+aobscanmodule(GetPointerAddressA,GTA5.exe,4D 89 B4 F7 xx xx xx xx 48 8B 74 24)
+registersymbol(GetPointerAddressA)
+aobscanmodule(LocalScriptsPTR,GTA5.exe,48 8B 05 ? ? ? ? 8B CF 48 8B 0C C8 39 59 68)
+registerSymbol(LocalScriptsPTR)
+aobscanmodule(GlobalPTR,GTA5.exe,4C 8D 05 ? ? ? ? 4D 8B 08 4D 85 C9 74 11)
+registersymbol(GlobalPTR)]])
+
+addr = 0
+addr=getAddress("WorldPTR") addr=addr+readInteger(addr+3)+7
+unregisterSymbol("WorldPTR") registerSymbol("WorldPTR", addr, true)
+
+addr=getAddress("BlipPTR") addr=addr+readInteger(addr+3)+7
+unregisterSymbol("BlipPTR") registerSymbol("BlipPTR", addr, true)
+
+addr = getAddress("GetPointerAddressA") addr = addr + 4 addr = readInteger(addr) addr = addr + getAddress("GTA5.exe")
+unregisterSymbol("GetPointerAddressA") registerSymbol("GetPointerAddressA", addr, true)
+
+addr=getAddress("LocalScriptsPTR") addr=addr+readInteger(addr+3)+7
+unregisterSymbol("LocalScriptsPTR") registerSymbol("LocalScriptsPTR",addr,true)
+
+addr=getAddress("GlobalPTR") addr=addr+readInteger(addr+3)+7
+unregisterSymbol("GlobalPTR") registerSymbol("GlobalPTR",addr,true)
+end
+
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>287</ID>
+          <Description>"Session Options"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>288</ID>
+              <Description>"Join Public Session"</Description>
+              <LastState/>
+              <Color>356F41</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(0)
+[DISABLE]
+{$lua}
+LoadSession(0)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>298</ID>
+              <Description>"New Public Session"</Description>
+              <LastState/>
+              <Color>356F41</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(1)
+[DISABLE]
+{$lua}
+LoadSession(1)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>297</ID>
+              <Description>"Closed Crew Session"</Description>
+              <LastState/>
+              <Color>735152</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(2)
+[DISABLE]
+{$lua}
+LoadSession(2)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>296</ID>
+              <Description>"Crew Session"</Description>
+              <LastState/>
+              <Color>735152</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(3)
+[DISABLE]
+{$lua}
+LoadSession(3)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>295</ID>
+              <Description>"Join Crew Session"</Description>
+              <LastState/>
+              <Color>735152</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(12)
+[DISABLE]
+{$lua}
+LoadSession(12)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>294</ID>
+              <Description>"Closed Friend Session"</Description>
+              <LastState/>
+              <Color>570057</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(6)
+[DISABLE]
+{$lua}
+LoadSession(6)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>293</ID>
+              <Description>"Find Friend Session"</Description>
+              <LastState/>
+              <Color>570057</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(9)
+[DISABLE]
+{$lua}
+LoadSession(9)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>292</ID>
+              <Description>"Solo Session"</Description>
+              <LastState/>
+              <Color>000000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(10)
+[DISABLE]
+{$lua}
+LoadSession(10)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>291</ID>
+              <Description>"Invite Only Session"</Description>
+              <LastState/>
+              <Color>000000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(11)
+[DISABLE]
+{$lua}
+LoadSession(11)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>290</ID>
+              <Description>"Leave Online"</Description>
+              <LastState/>
+              <Color>000097</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LoadSession(-1)
+[DISABLE]
+{$lua}
+LoadSession(-1)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>289</ID>
+              <Description>"Empty Session (10 sec. freeze)"</Description>
+              <LastState/>
+              <Color>15158A</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+pause() for i=0,1000,100 do sleep(1000) end unpause()
+[DISABLE]
+{$lua}
+pause() for i=0,1000,100 do sleep(1000) end unpause()
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>108</ID>
+          <Description>"Self Options"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>213</ID>
+              <Description>"Godmode"</Description>
+              <LastState/>
+              <Color>910086</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+godm=1
+function godm()
+   while 1==1 do
+       writeBytes("[[WorldPTR]+pCPed]+oGod","1")
+	   if godm==0 then
+       writeBytes("[[WorldPTR]+pCPed]+oGod","0")
+       break
+	   end
+       sleep (5000)
+   end
+end
+createNativeThread(godm);
+
+
+[DISABLE]
+{$lua}
+godm=0
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>109</Key>
+                  </Keys>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>278</ID>
+              <Description>"Never Wanted"</Description>
+              <LastState/>
+              <Color>006868</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+nwanted=1
+function nwanted()
+   while 1==1 do
+       writeBytes("[[[WorldPTR]+pCPed]+pCPlayerInfo]+oWanted","0")
+       if nwanted == 0 then
+       break
+       end
+       sleep (1000)
+   end
+end
+createNativeThread(nwanted);
+
+
+[DISABLE]
+{$lua}
+nwanted=0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>301</ID>
+              <Description>"Anti-AFK"</Description>
+              <LastState/>
+              <Color>000000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+antiafk=1
+function antiafk()
+   while 1==1 do
+       sleep (120000)
+       SG('i',1377236+1149,0)
+       if antiafk == 0 then
+       break
+	   end
+   end
+end
+createNativeThread(antiafk);
+
+
+[DISABLE]
+{$lua}
+antiafk=0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>206</ID>
+              <Description>"Seatbelt"</Description>
+              <LastState/>
+              <Color>800040</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+sbelt=1
+function sbelt()
+   while 1==1 do
+       writeBytes("[[WorldPTR]+pCPed]+oSeatbelt",-55)
+	   if sbelt==0 then
+       writeBytes("[[WorldPTR]+pCPed]+oSeatbelt",-56)
+       break
+	   end
+       sleep (15000)
+   end
+end
+createNativeThread(sbelt);
+
+[DISABLE]
+{$lua}
+sbelt=0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>336</ID>
+              <Description>"No Ragdoll"</Description>
+              <LastState/>
+              <Color>AA0055</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+nragdoll=1
+function nragdoll()
+   while 1==1 do
+       writeBytes("[[WorldPTR]+pCPed]+oRagdoll",1)
+	   if nragdoll==0 then
+       writeBytes("[[WorldPTR]+pCPed]+oRagdoll",32)
+       break
+	   end
+       sleep (15000)
+   end
+end
+createNativeThread(nragdoll);
+
+[DISABLE]
+{$lua}
+nragdoll=0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>237</ID>
+              <Description>"Undead Off-Radar"</Description>
+              <LastState/>
+              <Color>000080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+uoffradar=1
+function uoffradar()
+   while 1==1 do
+       writeFloat("[[WorldPTR]+pCPed]+oHealthMax",0)
+	   if uoffradar==0 then
+       writeFloat("[[WorldPTR]+pCPed]+oHealthMax",328)
+       break
+	   end
+       sleep (15000)
+   end
+end
+createNativeThread(uoffradar);
+
+[DISABLE]
+{$lua}
+uoffradar=0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>307</ID>
+              <Description>"Off-Radar"</Description>
+              <LastState/>
+              <Color>804000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+local GET_NETWORK_TIME=GG('i',1312603+11)
+SG('i',2425869+1+PLAYER_ID()*443+204,1)
+SG('i',2440049+70,GET_NETWORK_TIME)
+SG('i',2540384+4625,3)
+
+
+[DISABLE]
+{$lua}
+SG('i',2425869+1+PLAYER_ID()*443+204,0)
+SG('i',2540384+4625,t)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>313</ID>
+              <Description>"Ghost Organization"</Description>
+              <LastState/>
+              <Color>804000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+local GET_NETWORK_TIME=GG('i',1312603+11)
+SG('i',2425869+1+PLAYER_ID()*443+204,1)
+SG('i',2440049+70,GET_NETWORK_TIME)
+SG('i',2540384+4625,4)
+
+
+[DISABLE]
+{$lua}
+SG('i',2425869+1+PLAYER_ID()*443+204,0)
+SG('i',2540384+4625,t)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>312</ID>
+              <Description>"Bribe / Blind Cops"</Description>
+              <LastState/>
+              <Color>804000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+local GET_NETWORK_TIME=GG('i',1312603+11)
+SG('i',2540384+4620,1)
+SG('i',2540384+4622,GET_NETWORK_TIME+3600000)
+SG('i',2540384+4619,5)
+
+
+[DISABLE]
+{$lua}
+SG('i',2540384+4620,0)
+SG('i',2540384+4622,0)
+SG('i',2540384+4619,0)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>311</ID>
+              <Description>"Reveal Players"</Description>
+              <LastState/>
+              <Color>804000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+local GET_NETWORK_TIME=GG('i',1312585+11)
+SG('i',2425869+1+PLAYER_ID()*443+207,1)
+SG('i',2440049+71,GET_NETWORK_TIME+99999999)
+
+[DISABLE]
+{$lua}
+SG('i',2425869+1+PLAYER_ID()*443+207,0)
+SG('i',2440049+71,0)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>244</ID>
+              <Description>"Useful Features"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <Color>598D4E</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$Lua}
+function frameFlagsOnTick(t)
+  local ff = 0
+  if g_superJump then ff = ff + 64 end
+  if g_flamingFists then ff = ff + 32 end
+  if g_flamingAmmo then ff = ff + 16 end
+  if g_explosiveAmmo then ff = ff + 8 end
+  writeBytes("[[[WorldPTR]+pCPed]+pCPlayerInfo]+oFrameFlags", ff)
+end
+if g_frameTimer == nil then
+  g_frameTimer = createTimer(nil, false)
+  g_frameTimer.Interval = 1
+  g_frameTimer.setOnTimer(frameFlagsOnTick)
+end
+g_frameTimer.Enabled = true
+[DISABLE]
+{$Lua}
+g_frameTimer.Enabled = false
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>245</ID>
+                  <Description>"Super Jump"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+g_superJump = true
+[DISABLE]
+{$lua}
+g_superJump = false
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>248</ID>
+                  <Description>"Explosive Ammo"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+g_explosiveAmmo = true
+[DISABLE]
+{$lua}
+g_explosiveAmmo = false
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>247</ID>
+                  <Description>"Fire Ammo"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+g_flamingAmmo = true
+[DISABLE]
+{$lua}
+g_flamingAmmo = false
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>246</ID>
+                  <Description>"Explosive Punch"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+g_flamingFists = true
+[DISABLE]
+{$lua}
+g_flamingFists = false
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>148</ID>
+              <Description>"Wanted Level"</Description>
+              <LastState Value="0" RealAddress="1B12A717188"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oWanted</Offset>
+                <Offset>pCPlayerInfo</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>145</ID>
+              <Description>"Health"</Description>
+              <Options moRecursiveSetValue="1" moAlwaysHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Value="328" RealAddress="1B12777CC80"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oHealth</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>235</ID>
+              <Description>"Health Max"</Description>
+              <LastState Value="328" RealAddress="1B12777CCA0"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oHealthMax</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>207</ID>
+              <Description>"Run Speed"</Description>
+              <LastState Value="1" RealAddress="1B12A7175F0"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oRunSpeed</Offset>
+                <Offset>pCPlayerInfo</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>243</ID>
+              <Description>"Stealth Speed"</Description>
+              <LastState Value="1" RealAddress="1B12A716A8C"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oWalkSpeed</Offset>
+                <Offset>pCPlayerInfo</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>146</ID>
+              <Description>"Swim Speed"</Description>
+              <LastState Value="1" RealAddress="1B12A716A70"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oSwimSpeed</Offset>
+                <Offset>pCPlayerInfo</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>109</ID>
+          <Description>"Teleport"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>115</ID>
+              <Description>"Waypoint"</Description>
+              <LastState/>
+              <Color>FB007D</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+teleport('w')
+ 
+[DISABLE]
+{$lua}
+teleport('w')
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>107</Key>
+                  </Keys>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>116</ID>
+              <Description>"Objective"</Description>
+              <LastState/>
+              <Color>0085CC</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+teleport('o')
+ 
+[DISABLE]
+{$lua}
+teleport('o')
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>110</Key>
+                  </Keys>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>304</ID>
+              <Description>"Forward"</Description>
+              <LastState/>
+              <Color>0000D2</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+teleport('f')
+ 
+[DISABLE]
+{$lua}
+teleport('f')
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>305</ID>
+              <Description>"Last Vehicle"</Description>
+              <LastState/>
+              <Color>004000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+teleport('v')
+ 
+[DISABLE]
+{$lua}
+teleport('v')
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>338</ID>
+              <Description>"Personal Vehicle"</Description>
+              <LastState/>
+              <Color>004000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+SG('i',2409291+8,1)
+ 
+[DISABLE]
+{$lua}
+SG('i',2409291+8,1)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>209</ID>
+              <Description>"Manual"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>808040</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>210</ID>
+                  <Description>"X"</Description>
+                  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+                  <LastState Value="132.7418976" RealAddress="1B12B7F0B90"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oPositionX</Offset>
+                    <Offset>pCNavigation</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>231</ID>
+                      <Description>"VisualX"</Description>
+                      <LastState Value="132.7418976" RealAddress="1B12777CA90"/>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oVisualX</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>212</ID>
+                  <Description>"Y"</Description>
+                  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+                  <LastState Value="2912.421143" RealAddress="1B12B7F0B94"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oPositionY</Offset>
+                    <Offset>pCNavigation</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>232</ID>
+                      <Description>"VisualY"</Description>
+                      <LastState Value="2912.421143" RealAddress="1B12777CA94"/>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oVisualY</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>211</ID>
+                  <Description>"Z"</Description>
+                  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+                  <LastState Value="46.98424911" RealAddress="1B12B7F0B98"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oPositionZ</Offset>
+                    <Offset>pCNavigation</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>233</ID>
+                      <Description>"VisualZ"</Description>
+                      <LastState Value="46.98424911" RealAddress="1B12777CA98"/>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oVisualZ</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>343</ID>
+              <Description>"Open Teleport Menu"</Description>
+              <LastState/>
+              <Color>F000F7</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+v_LoadTpMenu()
+ 
+[DISABLE]
+{$lua}
+v_LoadTpMenu()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>117</ID>
+              <Description>"Personal (Blip)"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>118</ID>
+                  <Description>"Arcade"</Description>
+                  <LastState/>
+                  <Color>3A6A2F</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',740)
+ 
+[DISABLE]
+{$lua}
+teleport('i',740)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>282</ID>
+                  <Description>"MC Clubhouse"</Description>
+                  <LastState/>
+                  <Color>004DEC</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',492)
+ 
+[DISABLE]
+{$lua}
+teleport('i',492)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>120</ID>
+                  <Description>"Cocaine Lockup"</Description>
+                  <LastState/>
+                  <Color>004DEC</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',497)
+-- teleport('c',391.514,3590.125,33.276)
+ 
+[DISABLE]
+{$lua}
+teleport('i',497)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>122</ID>
+                  <Description>"Meth Lab"</Description>
+                  <LastState/>
+                  <Color>004DEC</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',499)
+--teleport('c',221.561,2459.344,56.231)
+ 
+[DISABLE]
+{$lua}
+teleport('i',499)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>121</ID>
+                  <Description>"Counterfeit Cash"</Description>
+                  <LastState/>
+                  <Color>004DEC</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',500)
+--teleport('c',640.512,2776.971,41.941)
+ 
+[DISABLE]
+{$lua}
+teleport('i',500)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>123</ID>
+                  <Description>"Weed Farm"</Description>
+                  <LastState/>
+                  <Color>004DEC</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',496)
+--teleport('c',2847.551,4437.499,48.64)
+ 
+[DISABLE]
+{$lua}
+teleport('i',496)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>277</ID>
+                  <Description>"Document Forgery"</Description>
+                  <LastState/>
+                  <Color>004DEC</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',498)
+ 
+[DISABLE]
+{$lua}
+teleport('i',498)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>276</ID>
+                  <Description>"Bunker"</Description>
+                  <LastState/>
+                  <Color>6D85E0</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',557)
+ 
+[DISABLE]
+{$lua}
+teleport('i',557)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>280</ID>
+                  <Description>"Nightclub"</Description>
+                  <LastState/>
+                  <Color>70346C</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',614)
+ 
+[DISABLE]
+{$lua}
+teleport('i',614)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>283</ID>
+                  <Description>"Hangar"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',569)
+ 
+[DISABLE]
+{$lua}
+teleport('i',569)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>281</ID>
+                  <Description>"CEO Office"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',475)
+ 
+[DISABLE]
+{$lua}
+teleport('i',475)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>303</ID>
+                  <Description>"Facility"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',590)
+ 
+[DISABLE]
+{$lua}
+teleport('i',590)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>284</ID>
+                  <Description>"Yacht"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('i',455)
+ 
+[DISABLE]
+{$lua}
+teleport('i',455)
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>226</ID>
+              <Description>"Cayo Perico Heist"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>261</ID>
+                  <Description>"1. Outside Compound"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>229</ID>
+                      <Description>"Compound Gate"</Description>
+                      <LastState/>
+                      <Color>78783D</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',4907.253,-5644.971,23.374)
+ 
+[DISABLE]
+{$lua}
+teleport('c',4907.253,-5644.971,23.374)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>228</ID>
+                      <Description>"Airport"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',4505.505,-4480,4.15)
+ 
+[DISABLE]
+{$lua}
+teleport('c',4505.505,-4480,4.15)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>227</ID>
+                      <Description>"Comms Tower"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5275.533,-5413.073,65.883)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5275.533,-5413.073,65.883)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>230</ID>
+                      <Description>"North Dock"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5077.351,-4650.437,2.335)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5077.351,-4650.437,2.335)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>242</ID>
+                      <Description>"Main Dock"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',4890.479,-5187.772,2.438)
+ 
+[DISABLE]
+{$lua}
+teleport('c',4890.479,-5187.772,2.438)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>241</ID>
+                      <Description>"Party Beach"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',4913.854,-4910.415,3.361)
+ 
+[DISABLE]
+{$lua}
+teleport('c',4913.854,-4910.415,3.361)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>249</ID>
+                      <Description>"Warehouse"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5116.395,-5146.855,2.251)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5116.395,-5146.855,2.251)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>259</ID>
+                      <Description>"Farm"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5328.395,-5259.855,32.591)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5328.395,-5259.855,32.591)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>250</ID>
+                      <Description>"North Drop Zone"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',4805.598,-4301.21,5.157)
+ 
+[DISABLE]
+{$lua}
+teleport('c',4805.598,-4301.21,5.157)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>240</ID>
+                      <Description>"South Drop Zone"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5474.056,-5825.906,19.08)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5474.056,-5825.906,19.08)
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>262</ID>
+                  <Description>"2. Inside Compound"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>256</ID>
+                      <Description>"Storage Room #1"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5008.818,-5785.960,17.831)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5008.818,-5785.960,17.831)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>257</ID>
+                      <Description>"Storage Room #2"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5030.186,-5736.463,17.865)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5030.186,-5736.463,17.865)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>258</ID>
+                      <Description>"Storage Room #3"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5083.618,-5755.901,15.831)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5083.618,-5755.901,15.831)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>255</ID>
+                      <Description>"Compound Elevator"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5010.407,-5752.105,28.84)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5010.407,-5752.105,28.84)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>253</ID>
+                      <Description>"Vault Target"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',5007.502,-5755.194,15.484)
+ 
+[DISABLE]
+{$lua}
+teleport('c',5007.502,-5755.194,15.484)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>254</ID>
+                      <Description>"Vault Storage"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',4999.764,-5749.864,14.84)
+ 
+[DISABLE]
+{$lua}
+teleport('c',4999.764,-5749.864,14.84)
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>260</ID>
+                  <Description>"3. Escape Cayo Perico"</Description>
+                  <LastState/>
+                  <Color>0000E6</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',7999.764,-5749.864,2.84)
+ 
+[DISABLE]
+{$lua}
+teleport('c',7999.764,-5749.864,2.84)
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>124</ID>
+              <Description>"Casino Heist"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>125</ID>
+                  <Description>"Waste Disposal Entrance"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',1004.224,80.701,80.855)
+ 
+[DISABLE]
+{$lua}
+teleport('c',1004.224,80.701,80.855)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>127</ID>
+                  <Description>"Staff Lobby"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2547.902,-273.099,-60.022)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2547.902,-273.099,-60.022)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>126</ID>
+                  <Description>"Waste Disposal"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2543.442,-216.564,-60.022,1.207)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2543.442,-216.564,-60.022,1.207)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>131</ID>
+                  <Description>"Stair Door"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2514.980,-284.087,-60.023)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2514.980,-284.087,-60.023)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>128</ID>
+                  <Description>"2-Keypad Door"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2467.876,-279.122,-72.117)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2467.876,-279.122,-72.117)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>129</ID>
+                  <Description>"Pre-Vault Room"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2498.863,-238.461,-72.097)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2498.863,-238.461,-72.097)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>130</ID>
+                  <Description>"Vault INSIDE"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2513.544,-239.155,-72.057)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2513.544,-239.155,-72.057)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>302</ID>
+                  <Description>"Vault Rooms"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>7D8A51</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>132</ID>
+                      <Description>"Left-Bottom"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2510.208,-251.151,-72)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2510.208,-251.151,-72)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>133</ID>
+                      <Description>"Left"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2519.855,-255.469,-72)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2519.855,-255.469,-72)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>134</ID>
+                      <Description>"Left-Top"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2533.730,-248.771,-72)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2533.730,-248.771,-72)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>135</ID>
+                      <Description>"Top"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2537.821,-238.257,-72.037)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2537.821,-238.257,-72.037)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>138</ID>
+                      <Description>"Right-Top"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2532.894,-226.034,-72)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2532.894,-226.034,-72)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>137</ID>
+                      <Description>"Right"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2520.145,-222.343,-72)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2520.145,-222.343,-72)
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>136</ID>
+                      <Description>"Right-Bottom"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',2509.758,-225.812,-72)
+ 
+[DISABLE]
+{$lua}
+teleport('c',2509.758,-225.812,-72)
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>139</ID>
+              <Description>"DD Act 2 Heist"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>140</ID>
+                  <Description>"1. Avenger"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',-311.699,6105.854,31.555)
+ 
+[DISABLE]
+{$lua}
+teleport('c',-311.699,6105.854,31.555)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>143</ID>
+                  <Description>"2. Submarine"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',-1498.012,5924.502,1)
+ 
+[DISABLE]
+{$lua}
+teleport('c',-1498.012,5924.502,1)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>142</ID>
+                  <Description>"3. Contact"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',515.287,4844.298,-70.27)
+ 
+[DISABLE]
+{$lua}
+teleport('c',515.287,4844.298,-70.27)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>141</ID>
+                  <Description>"4. USB"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+teleport('c',512.454,4836.762,-63.887)
+ 
+[DISABLE]
+{$lua}
+teleport('c',512.454,4836.762,-63.887)
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110</ID>
+          <Description>"Vehicle Options"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>2F2D91</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>173</ID>
+              <Description>"Handling Options"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>674538</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>166</ID>
+                  <Description>"Mass"</Description>
+                  <LastState Value="1500" RealAddress="1B12EF756FC"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oMass</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>180</ID>
+                  <Description>"Acceleration"</Description>
+                  <LastState Value="1.399999976" RealAddress="1B12EF7573C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oAcceleration</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>273</ID>
+                  <Description>"Drive Inertia"</Description>
+                  <LastState Value="1" RealAddress="1B12EF75744"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oDriveInertia</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>269</ID>
+                  <Description>"Initial Drive Force"</Description>
+                  <LastState Value="0.3540000021" RealAddress="1B12EF75750"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oInitialDriveForce</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>181</ID>
+                  <Description>"Brake Force"</Description>
+                  <LastState Value="1" RealAddress="1B12EF7575C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oBrakeForce</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>271</ID>
+                  <Description>"Handbrake Force"</Description>
+                  <LastState Value="0.5" RealAddress="1B12EF7576C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oHandbrakeForce</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>272</ID>
+                  <Description>"Traction Curve Max"</Description>
+                  <LastState Value="2.650000095" RealAddress="1B12EF75778"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oTractionCurveMax</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>182</ID>
+                  <Description>"Traction Curve Min"</Description>
+                  <LastState Value="2.549999952" RealAddress="1B12EF75780"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oTractionCurveMin</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>168</ID>
+                  <Description>"Collision Damage Mult"</Description>
+                  <LastState Value="0.6999999881" RealAddress="1B12EF757E0"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oCollisionMult</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>169</ID>
+                  <Description>"Weapon Damage Mult"</Description>
+                  <LastState Value="1" RealAddress="1B12EF757E4"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oWeaponMult</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>170</ID>
+                  <Description>"Deformation Mult"</Description>
+                  <LastState Value="0.6999999881" RealAddress="1B12EF757E8"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oDeformationMult</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>171</ID>
+                  <Description>"Engine Damage Mult"</Description>
+                  <LastState Value="1.5" RealAddress="1B12EF757EC"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oEngineMult</Offset>
+                    <Offset>pCHandlingData</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>183</ID>
+              <Description>"Modifications"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>545A29</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>187</ID>
+                  <Description>"EMS (0-3)"</Description>
+                  <LastState Value="3" RealAddress="1B1341BC646"/>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oEMS</Offset>
+                    <Offset>pCVehicleDrawHandler</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>188</ID>
+                  <Description>"Brakes (4-6)"</Description>
+                  <LastState Value="6" RealAddress="1B1341BC647"/>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oBrakes</Offset>
+                    <Offset>pCVehicleDrawHandler</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>189</ID>
+                  <Description>"Transmission (7-9)"</Description>
+                  <LastState Value="255" RealAddress="1B1341BC648"/>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oTransmission</Offset>
+                    <Offset>pCVehicleDrawHandler</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>191</ID>
+                  <Description>"Suspension (24-27?)"</Description>
+                  <LastState Value="255" RealAddress="1B1341BC64A"/>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oSuspension</Offset>
+                    <Offset>pCVehicleDrawHandler</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>192</ID>
+                  <Description>"Armor (10-14)"</Description>
+                  <LastState Value="255" RealAddress="1B1341BC64B"/>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oArmor</Offset>
+                    <Offset>pCVehicleDrawHandler</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>193</ID>
+                  <Description>"Turbo (0-1)"</Description>
+                  <LastState Value="1" RealAddress="1B1341BC64D"/>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oTurbo</Offset>
+                    <Offset>pCVehicleDrawHandler</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>194</ID>
+                  <Description>"Windows (0-3)"</Description>
+                  <LastState Value="0" RealAddress="1B1341BC66F"/>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oWindows</Offset>
+                    <Offset>pCVehicleDrawHandler</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>201</ID>
+              <Description>"Respray (Local)"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>34785F</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>202</ID>
+                  <Description>"Primary"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>195</ID>
+                      <Description>"Primary R"</Description>
+                      <LastState Value="15" RealAddress="1B132222B04"/>
+                      <Color>0000D5</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oPrimaryR</Offset>
+                        <Offset>pCVehicleVisual</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>196</ID>
+                      <Description>"Primary G"</Description>
+                      <LastState Value="15" RealAddress="1B132222B05"/>
+                      <Color>00AE00</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oPrimaryG</Offset>
+                        <Offset>pCVehicleVisual</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>197</ID>
+                      <Description>"Primary B"</Description>
+                      <LastState Value="15" RealAddress="1B132222B06"/>
+                      <Color>D00000</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oPrimaryB</Offset>
+                        <Offset>pCVehicleVisual</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>203</ID>
+                  <Description>"Secondary"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>198</ID>
+                      <Description>"Secondary R"</Description>
+                      <LastState Value="0" RealAddress="1B132222B08"/>
+                      <Color>0000D5</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oSecondaryR</Offset>
+                        <Offset>pCVehicleVisual</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>199</ID>
+                      <Description>"Secondary G"</Description>
+                      <LastState Value="63" RealAddress="1B132222B09"/>
+                      <Color>00AE00</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oSecondaryG</Offset>
+                        <Offset>pCVehicleVisual</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>200</ID>
+                      <Description>"Secondary B"</Description>
+                      <LastState Value="171" RealAddress="1B132222B0A"/>
+                      <Color>D00000</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oSecondaryB</Offset>
+                        <Offset>pCVehicleVisual</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>204</ID>
+                  <Description>"Neon"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>184</ID>
+                      <Description>"Neon R"</Description>
+                      <LastState Value="1" RealAddress="1B1341BC612"/>
+                      <Color>0000D5</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oNeonR</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>185</ID>
+                      <Description>"Neon G"</Description>
+                      <LastState Value="1" RealAddress="1B1341BC611"/>
+                      <Color>00AE00</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oNeonG</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>186</ID>
+                      <Description>"Neon B"</Description>
+                      <LastState Value="0" RealAddress="1B1341BC610"/>
+                      <Color>D00000</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>oNeonB</Offset>
+                        <Offset>pCVehicleDrawHandler</Offset>
+                        <Offset>pCVehicle</Offset>
+                        <Offset>pCPed</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>264</ID>
+              <Description>"Vehicle Godmode"</Description>
+              <LastState/>
+              <Color>840084</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+vgod=1
+function vgod()
+   while 1==1 do
+       writeBytes("[[[WorldPTR]+pCPed]+pCVehicle]+oGod","1")
+	   if vgod==0 then
+       writeBytes("[[[WorldPTR]+pCPed]+pCVehicle]+oGod","0")
+	   break
+	   end
+       sleep (5000)
+   end
+end
+createNativeThread(vgod);
+
+
+[DISABLE]
+{$lua}
+vgod=0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>239</ID>
+              <Description>"Full Upgrades"</Description>
+              <LastState/>
+              <Color>844D54</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oEMS",3)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oBrakes",6)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oTransmission",9)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oSuspension",27)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oArmor",14)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oTurbo",1)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oWindows",1)
+[DISABLE]
+{$lua}
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oEMS",3)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oBrakes",6)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oTransmission",9)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oSuspension",27)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oArmor",14)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oTurbo",1)
+writeBytes("[[[[WorldPTR]+pCPed]+pCVehicle]+pCVehicleDrawHandler]+oWindows",1)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>172</ID>
+              <Description>"Thrust"</Description>
+              <LastState Value="4.633756884E27" RealAddress="1B12EF75A28"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oThrust</Offset>
+                <Offset>pCHandlingData</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>214</ID>
+              <Description>"Health"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Value="971.8168335" RealAddress="1B12793DF40"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oVHealth</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>215</ID>
+                  <Description>"Health2"</Description>
+                  <LastState Value="971.8168335" RealAddress="1B12793E500"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oVHealth2</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>216</ID>
+                  <Description>"Health3"</Description>
+                  <LastState Value="996.2224731" RealAddress="1B12793E504"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oVHealth3</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>217</ID>
+                  <Description>"Engine Health"</Description>
+                  <LastState Value="996.5969238" RealAddress="1B12793E5C8"/>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>oVEngineHealth</Offset>
+                    <Offset>pCVehicle</Offset>
+                    <Offset>pCPed</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>165</ID>
+              <Description>"Gravity"</Description>
+              <LastState Value="9.800000191" RealAddress="1B12793E91C"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oVGravity</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>263</ID>
+              <Description>"Dirt Level"</Description>
+              <LastState Value="0.4042598605" RealAddress="1B12793E6B8"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oVDirt</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>328</ID>
+              <Description>"Mk2 Missile"</Description>
+              <LastState Value="65535" RealAddress="1B12793EF64"/>
+              <VariableType>2 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>12A4</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>330</ID>
+              <Description>"Countermeasures"</Description>
+              <LastState Value="0" RealAddress="1B12793EF78"/>
+              <VariableType>2 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oCountermeasures</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>329</ID>
+              <Description>"Aircraft Bombs"</Description>
+              <LastState Value="0" RealAddress="1B12793EF74"/>
+              <VariableType>2 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oAircraftBomb</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>163</ID>
+              <Description>"Boost"</Description>
+              <LastState Value="1.25" RealAddress="1B12793DFE0"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oVBoost</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>164</ID>
+              <Description>"Boost Recharge"</Description>
+              <LastState Value="0.5" RealAddress="1B12793DFE4"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oVBoostRecharge</Offset>
+                <Offset>pCVehicle</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Vehicle Spawner"</Description>
+          <LastState/>
+          <Color>F000F7</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+MiniGarageMod()
+[DISABLE]
+{$lua}
+MiniGarageMod()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>111</ID>
+          <Description>"Weapon Options"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>326</ID>
+              <Description>"Unlimited Ammo"</Description>
+              <LastState/>
+              <Color>8C5F46</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+infammo=1
+function infammo()
+   local f = readPointer(getAddress("[[[WorldPTR]+pCPed]+10D0]+48"))
+   while 1==1 do
+       for i = 39,0,-1 do
+       local ALL_AMMO = readPointer(f + 0x8 * i)
+       writeBytes(ALL_AMMO + 0x24, 1)
+       end
+       if infammo==0 then
+       for i = 39,0,-1 do
+       local ALL_AMMO   = readPointer(f + 0x8 * i)
+       writeBytes(ALL_AMMO + 0x24, 0)
+       end
+       break
+	   end
+       sleep(5000)
+   end
+end
+createNativeThread(infammo);
+[DISABLE]
+{$lua}
+infammo=0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>352</ID>
+              <Description>"Unlimited Clip"</Description>
+              <LastState/>
+              <Color>8C5F46</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+infclip=1
+function infclip()
+   while 1==1 do
+   local weap = getAddress("[[[[WorldPTR]+8]+50]+48]+8")
+   if weap ~= 8 then
+      writeBytes("[[[[[[[WorldPTR]+8]+50]+48]+8]+180]+2E0]+56",100)
+   end
+   if infclip == 0 then
+      break
+   end
+   sleep(1000)
+   end
+end
+createNativeThread(infclip);
+[DISABLE]
+{$lua}
+infclip=0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>151</ID>
+              <Description>"Current Clip"</Description>
+              <LastState Value="36" RealAddress="1B130530716"/>
+              <Color>495221</Color>
+              <VariableType>2 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>56</Offset>
+                <Offset>2E0</Offset>
+                <Offset>180</Offset>
+                <Offset>8</Offset>
+                <Offset>48</Offset>
+                <Offset>50</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>332</ID>
+              <Description>"Impact Type"</Description>
+              <DropDownList ReadOnly="1">2:Fists
+3:Bullet
+5:Explosion
+</DropDownList>
+              <LastState Value="3" RealAddress="1B13056EF60"/>
+              <Color>98943A</Color>
+              <VariableType>2 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oImpactType</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>333</ID>
+              <Description>"Impact Explosion"</Description>
+              <DropDownList>65535:Bullet
+2:Explode
+3:Molotov
+10:Firexplode
+11:WaterStream
+12:FireStream
+16:BigExplode
+19:Smoke
+22:Flare
+25:ExplosiveMk2
+26:Shockwave
+29:Blimp
+35:Snow
+38:Firework
+42:GhostExplode
+58:Lightning
+47:Debris
+70:Atomizer
+81:NoShake
+</DropDownList>
+              <LastState Value="65535" RealAddress="1B13056EF64"/>
+              <Color>98943A</Color>
+              <VariableType>2 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oImpactExplosion</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>327</ID>
+              <Description>"Damage"</Description>
+              <LastState Value="25" RealAddress="1B13056EFF0"/>
+              <Color>45438F</Color>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oDamage</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>156</ID>
+              <Description>"Reload Mult"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Value="1" RealAddress="1B13056F074"/>
+              <Color>800040</Color>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oReloadMult</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>155</ID>
+              <Description>"Reload Vehicle Mult"</Description>
+              <LastState Value="1" RealAddress="1B13056F070"/>
+              <Color>800040</Color>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oReloadVehicleMult</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>157</ID>
+              <Description>"Fire Rate"</Description>
+              <LastState Value="0.1000000015" RealAddress="1B13056F07C"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oShotTime</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>159</ID>
+              <Description>"Range"</Description>
+              <Options moRecursiveSetValue="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Value="120" RealAddress="1B13056F1CC"/>
+              <Color>000000</Color>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oRange</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>158</ID>
+              <Description>"Lock-on Range"</Description>
+              <LastState Value="55" RealAddress="1B13056F1C8"/>
+              <Color>000000</Color>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oLockRange</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>154</ID>
+              <Description>"Force Ped"</Description>
+              <LastState Value="100" RealAddress="1B13056F01C"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oForcePed</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>268</ID>
+              <Description>"Force Vehicle"</Description>
+              <LastState Value="750" RealAddress="1B13056F020"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oForceVehicle</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>267</ID>
+              <Description>"Force Flying"</Description>
+              <LastState Value="650" RealAddress="1B13056F024"/>
+              <VariableType>Float</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>oForceFlying</Offset>
+                <Offset>pCWeaponInfo</Offset>
+                <Offset>pCPedWeaponManager</Offset>
+                <Offset>pCPed</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>346</ID>
+          <Description>"Money &amp; RP Options"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <Color>00958D</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+-- idk why its getting error if i put in lua script
+if business ~= 1 then
+function BunkerSupplyDelay() SG('i',262145+21090,t) end -- default 600
+function MCSupplyDelay() SG('i',262145+18490,t) end -- default 600
+function GetBusinessIndex(ID) return 1590682+1+(PLAYER_ID()*883)+274+183+1+(ID*12) end -- ID 0-5
+function GetSupplies() for i=0,5,1 do if GG('i',GetBusinessIndex(i)+2)&lt;100 then SG('i',GA(2515394),i) end end end
+CheckBusiness=true
+function CheckBusinessID()
+    for i=0,4,1 do
+        for k,v in pairs(tbl_BusinessLocations) do
+            for k2,v2 in pairs(v) do
+                if GG('i',GetBusinessIndex(i))==v2[1] then tbl_Business[k]=i goto continue end
+            end
+        end
+        ::continue::
+    end
+end
+if CheckBusiness then CheckBusinessID() CheckBusiness=false end
+function TriggerMethProduction() -- 1080000 flags 6,7,9,11,12,13,14,20
+if tbl_Business[1]==nil then return end
+    local supplycount,productcount=GG('i',GetBusinessIndex(tbl_Business[1])+2),GG('i',GetBusinessIndex(tbl_Business[1])+1)
+    if productcount==20 then ShowMessage('Trigger Meth Production Function: ', 'Storage full with 20 Products!') return end
+    if supplycount&gt;0 then SG('i',GetBusinessIndex(tbl_Business[1])+9,0)
+    else ShowMessage('Trigger Meth Production Function: ', 'Supplies are empty! Buy Supplies!') end
+end
+function TriggerWeedProduction() -- 240000 flags 7,8,11,13,15,16,17
+    if tbl_Business[2]==nil then return end
+    local supplycount,productcount=GG('i',GetBusinessIndex(tbl_Business[2])+2),GG('i',GetBusinessIndex(tbl_Business[2])+1)
+    if productcount==80 then ShowMessage('Trigger Weed Production Function: ', 'Storage full with 80 Products!') return end
+    if supplycount&gt;0 then SG('i',GetBusinessIndex(tbl_Business[2])+9,0)
+    else ShowMessage('Trigger Weed Production Function: ', 'Supplies are empty! Buy Supplies!') end
+end
+function TriggerCocaineProduction() -- 900000/1800000 flags 5,7,8,9,11,12,13,15,16,18,19/6,8,9,10,12,13,14,16,17,19,20
+    if tbl_Business[3]==nil then return end
+    local supplycount,productcount=GG('i',GetBusinessIndex(tbl_Business[3])+2),GG('i',GetBusinessIndex(tbl_Business[3])+1)
+    if productcount==10 then ShowMessage('Trigger Weed Production Function: ', 'Storage full with 10 Products!') return end
+    if supplycount&gt;0 then SG('i',GetBusinessIndex(tbl_Business[3])+9,0)
+    else ShowMessage('Trigger Cocaine Production Function: ', 'Supplies are empty! Buy Supplies!') end
+end
+function TriggerCashProduction() -- 480000 flags 8,9,12,14,16,17,18
+    if tbl_Business[4]==nil then return end
+    local supplycount,productcount=GG('i',GetBusinessIndex(tbl_Business[4])+2),GG('i',GetBusinessIndex(tbl_Business[4])+1)
+    if productcount==40 then ShowMessage('Trigger Cash Production Function: ', 'Storage full with 40 Products!') return end
+    if supplycount&gt;0 then SG('i',GetBusinessIndex(tbl_Business[4])+9,0)
+    else ShowMessage('Trigger Cash Production Function: ', 'Supplies are empty! Buy Supplies!') end
+end
+function TriggerDocumentsProduction() -- 180000 flags 5,8,9,10,11,12,13,15,17
+    if tbl_Business[5]==nil then return end
+    local supplycount,productcount=GG('i',GetBusinessIndex(tbl_Business[5])+2),GG('i',GetBusinessIndex(tbl_Business[5])+1)
+    if productcount==60 then ShowMessage('Trigger Documents Production Function: ', 'Storage full with 60 Products!') return end
+    if supplycount&gt;0 then SG('i',GetBusinessIndex(tbl_Business[5])+9,0)
+    else ShowMessage('Trigger Documents Production Function: ', 'Supplies are empty! Buy Supplies!') end
+end
+function TriggerBunkerProduction() -- 420000 flags 5,7,11,13,14,17,18
+    local supplycount,progress=GG('i',GetBusinessIndex(5)+2),GG('i',GetBusinessIndex(5)+1)
+    if progress==100 then ShowMessage('Trigger Bunker Production Function: ', 'Full Stock!') return end
+    if supplycount&gt;0 then SG('i',GetBusinessIndex(5)+9,0)
+    else ShowMessage('Trigger Bunker Production Function: ', 'Supplies are empty! Buy Supplies!') end
+end
+function TriggerBunkerResearch() -- 210000 flags 4,6,10,12,13,16,17
+    local supplycount,progress=GG('i',GetBusinessIndex(5)+2),GG('i',GetBusinessIndex(5)+12)
+    if progress==60 then ShowMessage('Trigger Bunker Research Function: ', 'Research Progress Done!') return end
+    if supplycount&gt;0 then SG('i',GetBusinessIndex(5)+13,0)
+    else ShowMessage('Trigger Bunker Research Function: ', 'Supplies are empty! Buy Supplies!') end
+end
+business=1
+end
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>339</ID>
+              <Description>"RP Multiplier"</Description>
+              <LastState Value="1" RealAddress="1B183B30010"/>
+              <VariableType>Float</VariableType>
+              <Address>GA(262145+1)</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>340</ID>
+              <Description>"Bounty Lester Cut"</Description>
+              <LastState Value="1000" RealAddress="1B183B3CFB8"/>
+              <VariableType>2 Bytes</VariableType>
+              <Address>GA(262145+6646)</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>348</ID>
+              <Description>"Vehicle Sell Price"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1"/>
+              <LastState Value="0" RealAddress="1B184343B28"/>
+              <VariableType>8 Bytes</VariableType>
+              <Address>GA(26469)</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>347</ID>
+                  <Description>"Vehicle Sell Price 2"</Description>
+                  <LastState Value="0" RealAddress="1B1843D3448"/>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>GA(99007+970)</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>344</ID>
+              <Description>"Disable Orbital Cooldown"</Description>
+              <LastState/>
+              <Color>3D3A85</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+SG('i',262145+22589,0)
+[DISABLE]
+{$lua}
+SG('i',262145+22589,2880000)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>355</ID>
+              <Description>"Straight Flush"</Description>
+              <LastState/>
+              <Color>820000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+CTCP.Straight_Flush()
+[DISABLE]
+{$lua}
+CTCP.Straight_Flush()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>316</ID>
+              <Description>"Rig Slot Machines"</Description>
+              <LastState/>
+              <Color>820000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+if rigged~=1 then
+CST.Set_Jackpot_On_All_Slots(6)
+end
+[DISABLE]
+{$lua}
+if rigged~=1 then
+CST.Set_Jackpot_On_All_Slots(6)
+end
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>317</ID>
+              <Description>"Remove MC Supply Delay"</Description>
+              <LastState/>
+              <Color>2E9640</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+MCSupplyDelay(0)
+[DISABLE]
+{$lua}
+MCSupplyDelay(600)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>318</ID>
+              <Description>"Remove Bunker Supply Delay"</Description>
+              <LastState/>
+              <Color>2E9640</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+BunkerSupplyDelay(0)
+[DISABLE]
+{$lua}
+BunkerSupplyDelay(600)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>319</ID>
+              <Description>"Meth Production"</Description>
+              <LastState/>
+              <Color>0988B3</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+TriggerMethProduction()
+[DISABLE]
+{$lua}
+TriggerMethProduction()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>324</ID>
+              <Description>"Weed Production"</Description>
+              <LastState/>
+              <Color>0988B3</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+TriggerCocaineProduction()
+[DISABLE]
+{$lua}
+TriggerCocaineProduction()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>325</ID>
+              <Description>"Cocaine Production"</Description>
+              <LastState/>
+              <Color>0988B3</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+TriggerCocaineProduction()
+[DISABLE]
+{$lua}
+TriggerCocaineProduction()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>323</ID>
+              <Description>"Cash Production"</Description>
+              <LastState/>
+              <Color>0988B3</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+TriggerCashProduction()
+[DISABLE]
+{$lua}
+TriggerCashProduction()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>322</ID>
+              <Description>"Documents Production"</Description>
+              <LastState/>
+              <Color>0988B3</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+TriggerDocumentsProduction()
+[DISABLE]
+{$lua}
+TriggerDocumentsProduction()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>321</ID>
+              <Description>"Bunker Production"</Description>
+              <LastState/>
+              <Color>8A5E51</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+TriggerBunkerProduction()
+[DISABLE]
+{$lua}
+TriggerBunkerProduction()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>320</ID>
+              <Description>"Bunker Research"</Description>
+              <LastState/>
+              <Color>8A5E51</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+TriggerBunkerResearch()
+[DISABLE]
+{$lua}
+TriggerBunkerResearch()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>337</ID>
+              <Description>"Bunker Delivery (Modify &lt;script&gt; first!)"</Description>
+              <LastState/>
+              <Color>8A5E51</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+deliverBunker(money here, bunker product value)
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>219</ID>
+          <Description>"Heist Cut Editor"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>220</ID>
+              <Description>"Cayo Perico Heist"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>008080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>221</ID>
+                  <Description>"Player 1 (Host)"</Description>
+                  <LastState Value="100" RealAddress="1B183B22178"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Cayo(1)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>222</ID>
+                  <Description>"Player 2"</Description>
+                  <LastState Value="0" RealAddress="1B183B22180"/>
+                  <Color>313131</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Cayo(2)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>223</ID>
+                  <Description>"Player 3"</Description>
+                  <LastState Value="0" RealAddress="1B183B22188"/>
+                  <Color>606060</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Cayo(3)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>224</ID>
+                  <Description>"Player 4"</Description>
+                  <LastState Value="0" RealAddress="1B183B22190"/>
+                  <Color>8D8D8D</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Cayo(4)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>252</ID>
+                  <Description>"Local Bag Size"</Description>
+                  <LastState Value="1800" RealAddress="1B183B68A40"/>
+                  <Color>0057AE</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GA(262145+28999)</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>12</ID>
+              <Description>"Casino Heist"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>428C3C</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>2</ID>
+                  <Description>"Player Cut %"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>3</ID>
+                      <Description>"Player 1 (Host)"</Description>
+                      <LastState Value="0" RealAddress="1B183B17968"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>Casino(1)</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4</ID>
+                      <Description>"Player 2"</Description>
+                      <LastState Value="0" RealAddress="1B183B17970"/>
+                      <Color>2D2D2D</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>Casino(2)</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5</ID>
+                      <Description>"Player 3"</Description>
+                      <LastState Value="0" RealAddress="1B183B17978"/>
+                      <Color>5C5C5C</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>Casino(3)</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6</ID>
+                      <Description>"Player 4"</Description>
+                      <LastState Value="0" RealAddress="1B183B17980"/>
+                      <Color>848484</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>Casino(4)</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>7</ID>
+                  <Description>"Potential Take"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>8</ID>
+                      <Description>"Cash"</Description>
+                      <LastState Value="2115000" RealAddress="1B183B66DC0"/>
+                      <Color>00C400</Color>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>CasinoPotential(1)</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>9</ID>
+                      <Description>"Artwork"</Description>
+                      <LastState Value="2350000" RealAddress="1B183B66DC8"/>
+                      <Color>AB63B6</Color>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>CasinoPotential(2)</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>10</ID>
+                      <Description>"Gold"</Description>
+                      <LastState Value="2585000" RealAddress="1B183B66DD0"/>
+                      <Color>42C0C4</Color>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>CasinoPotential(3)</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>11</ID>
+                      <Description>"Diamond"</Description>
+                      <LastState Value="3290000" RealAddress="1B183B66DD8"/>
+                      <Color>BBA446</Color>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>CasinoPotential(4)</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>27</ID>
+                  <Description>"AI Crew Cut %"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>29</ID>
+                      <Description>"Gunman"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>28</ID>
+                          <Description>"Karl"</Description>
+                          <LastState Value="5" RealAddress="1B183B66E20"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(1)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>32</ID>
+                          <Description>"Gustavo"</Description>
+                          <LastState Value="9" RealAddress="1B183B66E28"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(2)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>33</ID>
+                          <Description>"Charlie"</Description>
+                          <LastState Value="7" RealAddress="1B183B66E30"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(3)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>34</ID>
+                          <Description>"Chester"</Description>
+                          <LastState Value="10" RealAddress="1B183B66E38"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(4)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>35</ID>
+                          <Description>"Patrick"</Description>
+                          <LastState Value="8" RealAddress="1B183B66E40"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(5)</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>30</ID>
+                      <Description>"Driver"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <Color>444444</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>36</ID>
+                          <Description>"Karim"</Description>
+                          <LastState Value="5" RealAddress="1B183B66E48"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(6)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>37</ID>
+                          <Description>"Taliana"</Description>
+                          <LastState Value="7" RealAddress="1B183B66E50"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(7)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>38</ID>
+                          <Description>"Eddie"</Description>
+                          <LastState Value="9" RealAddress="1B183B66E58"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(8)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>39</ID>
+                          <Description>"Zach"</Description>
+                          <LastState Value="6" RealAddress="1B183B66E60"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(9)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>40</ID>
+                          <Description>"Chester"</Description>
+                          <LastState Value="10" RealAddress="1B183B66E68"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(10)</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>31</ID>
+                      <Description>"Hacker"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <Color>6E6E6E</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>41</ID>
+                          <Description>"Rickie"</Description>
+                          <LastState Value="3" RealAddress="1B183B66E70"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(11)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>42</ID>
+                          <Description>"Christian"</Description>
+                          <LastState Value="7" RealAddress="1B183B66E78"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(12)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>43</ID>
+                          <Description>"Yohan"</Description>
+                          <LastState Value="5" RealAddress="1B183B66E80"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(13)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>44</ID>
+                          <Description>"Avi"</Description>
+                          <LastState Value="10" RealAddress="1B183B66E88"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(14)</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>45</ID>
+                          <Description>"Paige"</Description>
+                          <LastState Value="9" RealAddress="1B183B66E90"/>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CasinoAI(15)</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>13</ID>
+              <Description>"Doomsday Heist"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>AD854E</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>15</ID>
+                  <Description>"Player 1 (Host)"</Description>
+                  <LastState Value="0" RealAddress="1B183B0D6E0"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Doomsday(1)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16</ID>
+                  <Description>"Player 2"</Description>
+                  <LastState Value="0" RealAddress="1B183B0D6E8"/>
+                  <Color>313131</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Doomsday(2)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>17</ID>
+                  <Description>"Player 3"</Description>
+                  <LastState Value="0" RealAddress="1B183B0D6F0"/>
+                  <Color>606060</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Doomsday(3)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>18</ID>
+                  <Description>"Player 4"</Description>
+                  <LastState Value="0" RealAddress="1B183B0D6F8"/>
+                  <Color>8D8D8D</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Doomsday(4)</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>19</ID>
+              <Description>"Apartement Heist"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>403DBE</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>21</ID>
+                  <Description>"Player 1 (Host)"</Description>
+                  <LastState Value="0" RealAddress="1B183ADC318"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Apart(1)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>22</ID>
+                  <Description>"Player 2"</Description>
+                  <LastState Value="0" RealAddress="1B183ADC320"/>
+                  <Color>414141</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Apart(2)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>23</ID>
+                  <Description>"Player 3"</Description>
+                  <LastState Value="0" RealAddress="1B183ADC328"/>
+                  <Color>606060</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Apart(3)</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>24</ID>
+                  <Description>"Player 4"</Description>
+                  <LastState Value="0" RealAddress="1B183ADC330"/>
+                  <Color>8B8B8B</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Apart(4)</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>286</ID>
+      <Description>"Show Address Panel"</Description>
+      <LastState/>
+      <Color>000000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+MainForm.Panel5.visible = true
+
+[DISABLE]
+{$lua}
+MainForm.Panel5.visible = false
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>334</ID>
+      <Description>"Show Lua Engine"</Description>
+      <LastState/>
+      <Color>8D1B40</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+print('')
+
+[DISABLE]
+{$lua}
+print('')
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>356</ID>
+      <Description>"Add New Address"</Description>
+      <LastState/>
+      <Color>36348F</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+AddressList.createMemoryRecord()
+
+[DISABLE]
+{$lua}
+AddressList.createMemoryRecord()
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>MainForm.Panel5.visible = false
+MainForm.Caption = "Cayo Perico Cheat Table v2.2"
+
+-- CPedFactory Offsets (WorldPTR)
+pCPed = 0x8
+
+-- CPed Offsets
+pCNavigation = 0x30
+oVisualX = 0x90 oVisualY = 0x94 oVisualZ = 0x98 -- float, vector3
+oGod = 0x189 -- int8 0:false 1:true
+oHealth = 0x280 -- float
+oHealthMax = 0x2A0
+pCVehicle = 0xD30
+oRagdoll = 0x10B8 -- int8 32:false 1/0:true
+pCPlayerInfo = 0x10C8
+pCPedWeaponManager = 0x10D8
+oSeatbelt = 0x140C -- byte 55:false 56:true
+oInVehicle = 0x1477 -- int8 16:false 0:true
+oArmor = 0x14E0
+
+-- CNavigation Offsets
+oHeading = 0x20 -- float
+oHeading2 = 0x24
+oRotation = 0x30 oRotation2 = 0x34 oRotation3 = 0x38 -- float, vector3
+oPositionX = 0x50 oPositionY = 0x54 oPositionZ = 0x58
+
+--CPlayerInfo Offsets
+oRunSpeed = 0xCD0 -- float
+oSwimSpeed = 0x150
+oWalkSpeed = 0x16C
+oFrameFlags = 0x1F9
+oWanted = 0x868 -- int32
+
+-- CPedWeaponManager Offsets
+pCWeaponInfo = 0x20
+--&gt; CWeaponInfo
+oImpactType = 0x20 -- int32 3:bullet 5:explosion
+oImpactExplosion = 0x24 -- int8
+oImpactType2 = 0x54 -- int8
+pCAmmoInfo = 0x60
+oSpread = 0x7C -- float
+oDamage = 0xB0
+oForce = 0xD8
+oForcePed = 0xDC
+oForceVehicle = 0xE0
+oForceFlying = 0xE4
+oPenetration = 0x110
+oMuzzleVelocity = 0x11C
+oBulletBatch = 0x124
+oReloadVehicleMult = 0x130
+oReloadMult = 0x134
+oShotTime = 0x13C
+oLockRange = 0x288
+oRange = 0x28C
+--&gt; CAmmoInfo
+pCAmmoWrap = 0x8
+oMaxAmmo = 0x28
+--&gt; CAmmoWrap
+pCAmmo = 0x0
+--&gt; CAmmmo
+oCurrentAmmo = 0x18
+
+-- CVehicle Offsets
+oVInvisibility = 0x2C -- int8
+-- pCNavigation = 0x30
+pCVehicleDrawHandler = 0x48
+oVPositionX = 0x110 -- 0x120
+oVPositionY = 0x118 -- 0x124
+oVPositionZ = 0x11A -- 0x128 float, vector3
+-- oGod = 0x189 -- int8
+oVHealth = 0x280 -- float
+oVHealthMax = 0x2A0
+oVBoost = 0x320
+oVBoostRecharge = 0x324
+oVHealth2 = 0x840
+oVHealth3 = 0x844
+oVEngineHealth = 0x908
+pCHandlingData = 0x938
+oVDirt = 0x9F8 -- float
+oBulletproofTires = 0x943 --int8
+oVGravity = 0xC5C -- float
+oMk2Missiles = 0x12A4 -- int8
+oAircraftBomb = 0x12B4
+oCountermeasures = 0x12B8
+
+--&gt; CHandlingData Offsets
+oMass = 0xC -- float
+oBouyancy = 0x40 -- float
+oAcceleration = 0x4C
+oDriveInertia = 0x54
+oInitialDriveForce = 0x60
+oBrakeForce = 0x6C
+oHandbrakeForce = 0x7C
+oTractionCurveMax = 0x88
+oTractionCurveMin = 0x90
+oCollisionMult = 0xF0
+oWeaponMult = 0xF4
+oDeformationMult = 0xF8
+oEngineMult = 0xFC
+oThrust = 0x338
+
+--&gt; CVehicleDrawHandler Offsets
+pCVehicleVisual = 0x20
+oNeonR = 0x3A2 -- int8
+oNeonG = 0x3A1
+oNeonB = 0x3A0
+oEMS = 0x3D6
+oBrakes = 0x3D7
+oTransmission = 0x3D8
+oHorn = 0x3D9 -- may crash the game
+oSuspension = 0x3DA
+oArmor = 0x3DB
+oTurbo = 0x3DD
+oWindows = 0x3FF
+
+--&gt; CVehicleVisual
+oPrimaryR = 0xA4 -- int8
+oPrimaryG = 0xA5
+oPrimaryB = 0xA6
+oSecondaryR = 0xA8
+oSecondaryG = 0xA9
+oSecondaryB = 0xAA
+oLicensePlate = 0x130 -- dword / byte array
+
+-- CReplayInterface Offsets
+--[[ pCReplayInterface = readPointer(ReplayInterfacePTR)
+     CReplayInterfaceVehicle = 0x14
+     CReplayInterfacePed = 0x18
+     CReplayInterfacePickup = 0x20
+--]]
+
+-- Global Function
+function GA(Index)
+    local p=getAddress('GlobalPTR') --if not p then return end
+    return readQword(p+(8*(Index&gt;&gt;0x12&amp;0x3F)))+(8*(Index&amp;0x3FFFF))
+end --// Global Address
+function GG(Type,Index) --// Get Global
+    if Type=="i" then return readInteger(GA(Index))
+    elseif Type=="f" then return readFloat(GA(Index))
+    elseif Type=="s" then return readString(GA(Index))
+    else return "NULL" end
+end
+function SG(Type,Index,Value) --// Set Global
+    if Type=="i" then writeInteger(GA(Index),Value)
+    elseif Type=="f" then writeFloat(GA(Index),Value)
+    elseif Type=="s" then writeString(GA(Index),Value)
+    else return "NULL" end
+end
+function PLAYER_ID() return readInteger(GA(2440049)) end
+function Cayo(player) return GA(1704127+823+56+player) end
+function Casino(player) return GA(1697303+2325+player) end
+function CasinoPotential(id) return GA(262145+28086+id) end
+function CasinoAI(id) return GA(262145+28098+id) end
+function Doomsday(player) return GA(1693565+812+50+player) end
+function Apart(player) return GA(1666210+3008+player) end
+
+-- Teleport Function
+function teleport(to,x,y,z,yaw)
+   local a = getAddress("BlipPTR")
+   -- Waypoint
+   if to == 'w' then
+   for i = 2000, 1, -1
+   do
+     local n = readPointer(a + (i * 8))
+     if (n &gt; 0) and (8 == readInteger(n + 0x40)) and (84 == readInteger(n + 0x48))
+     then
+        local x = readFloat(n + 0x10)
+        local y = readFloat(n + 0x14)
+        local z = -255
+        teleport('c',x,y,z)
+     end
+   end
+   end
+   -- Objective
+   if to == 'o' then
+   for i = 2000, 1, -1
+   do
+    local n = readPointer(a + (i * 8))
+    if (n &gt; 0) and (1 == readInteger(n + 0x40)) and ((5 == readInteger(n + 0x48)) or (60 == readInteger(n + 0x48)) or (66 == readInteger(n + 0x48)))
+      then
+      local x = readFloat(n + 0x10)
+      local y = readFloat(n + 0x14)
+      local z = readFloat(n + 0x18) + 0.1
+      teleport('c',x,y,z)
+      break
+    end
+    end
+  end
+  -- Blip
+  if to == 'i' then
+   for i = 2000, 1, -1
+   do
+    local n = readPointer(a + (i * 8))
+    if (n &gt; 0) and (x == readInteger(n + 0x40)) then
+      local x = readFloat(n + 0x10)
+      local y = readFloat(n + 0x14)
+      local z = readFloat(n + 0x18) + 0.1
+      teleport('c',x,y,z)
+      break
+    end
+    end
+  end
+  -- Forward
+  if to == 'f' then
+    local ptr = readPointer(readPointer(getAddress("WorldPTR")) + pCPed)
+    if readBytes("[[WorldPTR]+pCPed]+oInVehicle") == 0 then
+       ptr = readPointer(ptr + pCVehicle)
+    end
+    local CNavigation = readPointer(ptr + pCNavigation)
+    local head = readFloat(CNavigation + oHeading)
+    local head2 = readFloat(CNavigation + oHeading2)
+    local x = readFloat(CNavigation + oPositionX)-(head2*3)
+    local y = readFloat(CNavigation + oPositionY)+(head*3)
+    local z = readFloat(CNavigation + oPositionZ)
+    teleport('c',x,y,z)
+  end
+  -- Last Vehicle
+  if to == 'v' then
+    local ptr = readPointer(readPointer(getAddress("WorldPTR")) + pCPed)
+    local CNavigation = readPointer(ptr + pCNavigation)
+    local CVehicle = readPointer(ptr + pCVehicle)
+    local CVNavigation = readPointer(CVehicle + pCNavigation)
+    local x = readFloat(CVNavigation + oPositionX)
+    local y = readFloat(CVNavigation + oPositionY)
+    local z = readFloat(CVNavigation + oPositionZ) + 0.5
+    teleport('c',x,y,z)
+  end
+  -- Custom Coords
+  if to == 'c' then
+    --local z = z + 0.03
+    local ptr = readPointer(readPointer(getAddress("WorldPTR")) + pCPed)
+    if (readInteger(ptr + oInVehicle) == 0) then
+      ptr = readPointer(ptr + pCVehicle)
+    end
+    local CNavigation = readPointer(ptr + pCNavigation)
+    writeFloat(CNavigation + oPositionX, x)
+    writeFloat(CNavigation + oPositionY, y)
+    writeFloat(CNavigation + oPositionZ, z)
+    writeFloat(ptr + oVisualX, x)
+    writeFloat(ptr + oVisualY, y)
+    writeFloat(ptr + oVisualZ, z)
+  end
+  -- Get Current Coords (For custom locations)
+  if to == 'g' then
+    local ptr=readPointer(readPointer("WorldPTR")+8)
+    local addr=readPointer(ptr+0x30)
+    local x=f_Round(readFloat(addr+0x50),3)
+    local y=f_Round(readFloat(addr+0x54),3)
+    local z=f_Round(readFloat(addr+0x58),3)
+    return x,y,z
+  end
+end
+
+-- Save Teleport Location
+function f_Round(float,digits) return string.format("%."..digits.."f",float);end
+_MyFilePath='';if TrainerOrigin~=nil then _MyFilePath=TrainerOrigin else _MyFilePath=getCheatEngineDir();end
+function v_SaveTPLocation()
+  local x,y,z,LocationName,vtbl='','','','',''
+  LocationName=inputQuery('Save Teleport Location','Enter Location Name','')
+  if LocationName==nil or LocationName=='' then return end
+  x,y,z=teleport('g')
+  local fs=assert(io.open(string.format('%s/Teleport Locations.txt',_MyFilePath), "a"));
+  vtbl=string.format('%s x:%s, y:%s, z:%s\n',LocationName,x,y,z)
+  fs:write(vtbl);
+  fs:close();
+end
+function f_GetLocationsForMenu()
+  local x,y,z,LocationName,vtbl,tbl_Locations='','','','','',{}
+  local fs=assert(io.open(string.format('%s/Teleport Locations.txt',_MyFilePath), "r"));
+  for c=1,200,1 do
+    local line=fs:read("*line")
+    if line==nil or line=='' then goto continue; end
+    local ls1,ls2=string.find(line,' x:')
+    local ls3,ls4=string.find(line,', y:')
+    local ls5,ls6=string.find(line,', z:')
+    local sbn,sbx,sby,sbz=string.sub(line,1,ls1-1),string.sub(line,ls2+1,ls3-1),string.sub(line,ls4+1,ls5-1),string.sub(line,ls6+1,string.len(line))
+    table.insert(tbl_Locations,c,{sbn,sbx,sby,sbz})
+  end
+  ::continue::
+  fs:close();
+    return tbl_Locations
+end
+function v_LoadTpMenu()-- Form
+  local TPForm=createForm(false)
+  TCOMP(TPForm,{Caption="Teleport",Position=poMainFormCenter,Color=0x000000,Width=200,Height=120,Visible=true,BorderStyle="bsToolWindow"});
+  -- Label 1
+  local Lbl1=createLabel(TPForm)
+  TCOMP(Lbl1,{Left=20,Top=10,Enabled=true,Visible=true,Color=clNone,Alignment=taLeftJustify});
+  local Fnt1=Lbl1.Font;TCOMP(Fnt1,{Name='Calibri',Height=-15,Size=11,Pitch='fpVariable',Quality='fqDraft',Style='[fsBold]',Color=0xff00ff});
+  Lbl1.Caption='Teleport to..'
+  -- ComboBox 1
+  local Cb1=createComboBox(TPForm);
+  TCOMP(Cb1,{MultiSelect=false,AutoSize=false,ReadOnly=true,Visible=true,Top=40,Left=20,Width=160,Height=23,DropDownCount=20,Color=0xffffff,Style="csDropDownList"})
+  local Fnt2=Cb1.Font;TCOMP(Fnt2,{Color=0x000000,Name='Calibri',Height=-11,Size=8,Style='[bsBold]'});
+  local tbl_Locations={};tbl_Locations=f_GetLocationsForMenu();
+  if tbl_Locations==nil then return end
+  Cb1.items.add(0,'Teleport Locations:');
+  for c,k in pairs(tbl_Locations) do Cb1.items.add(c-1,k[1]);Cb1.setItemIndex(c-1); end
+  Cb1.ItemIndex=0;
+  -- Button 1
+  local Btn1=createButton(TPForm)
+  TCOMP(Btn1,{Caption='Teleport',Left=110,Top=75,Width=70,Height=30,Enabled=true,Visible=true,TabOrder=0,TabStop=true});
+  Btn1.Anchors,Btn1.BidiMode={akTop,akLeft},bdLeftToRight;
+  Btn1.OnClick=function() local cbi=Cb1.ItemIndex;if cbi~=0 then;teleport('c',tbl_Locations[cbi][2],tbl_Locations[cbi][3],tbl_Locations[cbi][4]);end;end
+  Btn1.BringToFront()
+  -- Button 2
+  local Btn2=createButton(TPForm)
+  TCOMP(Btn2,{Caption='Save',Left=20,Top=75,Width=70,Height=30,Enabled=true,Visible=true,TabOrder=0,TabStop=true});
+  Btn2.Anchors,Btn1.BidiMode={akTop,akLeft},bdLeftToRight;
+  Btn2.OnClick=function() v_SaveTPLocation();TPForm.hide();TPForm=nil;v_LoadTpMenu();end
+  Btn2.BringToFront()
+  TPForm.Show()
+end
+
+-- Session Options
+function LoadSession(id)
+    if id==-1 then
+        SG('i',1312443+2,-1)
+        SG('i',1312443,1)
+        Sleep(200)
+        SG('i',1312443,0)
+    else
+        SG('i',1312854,id)
+        SG('i',1312443,1)
+        Sleep(200)
+        SG('i',1312443,0)
+    end
+end
+
+-- JOAAT converter
+function joaat(str)
+  local Uint32 = 0xffffffff;
+  hash = 0;
+  str = str:lower();
+  for i = 1, str:len() do
+  hash = hash + str:byte(i);
+  hash = hash + (hash &lt;&lt; 10);
+  hash = hash ~ ((hash &amp; Uint32) &gt;&gt; 6);
+  end
+  hash = hash + (hash &lt;&lt; 3);
+  hash = hash ~ ((hash &amp; Uint32) &gt;&gt; 11);
+  hash = hash + (hash &lt;&lt; 15);
+  return hash &amp; Uint32
+end
+
+-- Spawn Vehicle Function
+CREATE_VEHICLE = function (Hash,cord_x,cord_y,cord_z,pegasus)
+      local ped_heading = readFloat("[[[WorldPTR]+8]+30]+20")
+      local ped_heading2 = readFloat("[[[WorldPTR]+8]+30]+24")
+      local spawner_x = readFloat(cord_x)
+      local spawner_y = readFloat(cord_y)
+      local spawner_z = readFloat(cord_z)
+      spawner_x = spawner_x - (ped_heading2 * 5)
+      spawner_y = spawner_y + (ped_heading * 5)
+      spawner_z = spawner_z + 0.5
+      SG('f',2462286+7+0, spawner_x)
+      SG('f',2462286+7+1, spawner_y)
+      SG('f',2462286+7+2, spawner_z)
+      SG('i',2462286+27+66, joaat(Hash))
+      SG('i',2462286+27+28, 1) --weaponised ownerflag
+      SG('i',2462286+27+60, 1)
+      SG('i',2462286+27+95, 14) --ownerflag
+      SG('i',2462286+27+94, 2) --personal car ownerflag
+      SG('i',2462286+5,1)         ---SET('i',CarSpawn+0x1168, 1)  --can spawn flag must be odd
+      SG('i',2462286+2,1)         ---SET('i',CarSpawn+0x1180, 1) --spawn toggle gets reset to 0 on car spawn
+      SG('i',2462286+3, pegasus)
+      SG('i',2462286+27+74, 1) --Red Neon Amount 1-255 100%-0%
+      SG('i',2462286+27+75, 1) --Green Neon Amount 1-255 100%-0%
+      SG('i',2462286+27+76, 0) --Blue Neon Amount 1-255 100%-0%
+      SG('i',2462286+27+60, 4030726305) --landinggear/vehstate
+      SG('i',2462286+27+5, -1)  --default paintjob primary -1 auto 120
+      SG('i',2462286+27+6, -1)  --default paintjob secondary -1 auto 120
+      SG('i',2462286+27+7, -1)
+      SG('i',2462286+27+8, -1)
+      SG('i',2462286+27+15, 2) -- primary weapon
+      SG('i',2462286+27+20, 2) -- secondary weapon
+      SG('i',2462286+27+19,4)
+      --set.global(2462286+27+20,int,1)
+      SG('i',2462286+27+21,4)
+      SG('i',2462286+27+22,3)
+      SG('i',2462286+27+23,10)
+      SG('i',2462286+27+24,58)
+      SG('i',2462286+27+69,-1) ---Wheel type
+      SG('i',2462286+27+33,-1) --Wheel Selection
+	  -- SG('s',2462286+27+1,"sbr1na") -- License plate
+    end
+function TCOMP(T,C,...) for K,V in pairs(C) do T[K]=V end if select('#',...)&gt;0 then return TCOMP(T,...) else return T end end
+tbl_Vehicles={
+{"Adder",3078201489},{"Airbus",1283517198},{"Airtug",1560980623},{"Akula",1181327175},{"Akuma",1672195559},{"Alpha",767087018},{"Alphaz1",2771347558},{"Ambulance",1171614426},{"Annihilator",837858166},{"Apc",562680400},{"Ardent",159274291},{"Armytanker",3087536137},{"Armytrailer",2818520053},{"Armytrailer2",2657817814},{"Asbo",1118611807},{"Asea",2485144969},{"Asea2",2487343317},{"Asterope",2391954683},{"Autarch",3981782132},{"Avarus",2179174271},{"Avenger",2176659152},{"Avenger2",408970549},{"Bagger",2154536131},{"Baletrailer",3895125590},{"Baller",3486135912},{"Baller2",142944341},{"Baller3",1878062887},{"Baller4",634118882},{"Baller5",470404958},{"Baller6",666166960},{"Banshee",3253274834},{"Banshee2",633712403},{"Barracks",3471458123},{"Barracks2",1074326203},{"Barracks3",630371791},{"Barrage",4081974053},{"Bati",4180675781},{"Bati2",3403504941},{"Benson",2053223216},{"Besra",1824333165},{"Bestiagts",1274868363},{"Bf400",86520421},{"Bfinjection",1126868326},{"Biff",850991848},{"Bifta",3945366167},{"Bison",4278019151},{"Bison2",2072156101},{"Bison3",1739845664},{"Bjxl",850565707},{"Blade",3089165662},{"Blazer",2166734073},{"Blazer2",4246935337},{"Blazer3",3025077634},{"Blazer4",3854198872},{"Blazer5",2704629607},{"Blimp",4143991942},{"Blimp2",3681241380},{"Blimp3",3987008919},{"Blista",3950024287},{"Blista2",1039032026},{"Blista3",3703315515},{"Bmx",1131912276},{"Boattrailer",524108981},{"Bobcatxl",1069929536},{"Bodhi2",2859047862},{"Bombushka",4262088844},{"Boxville",2307837162},{"Boxville2",4061868990},{"Boxville3",121658888},{"Boxville4",444171386},{"Boxville5",682434785},{"Brawler",2815302597},{"Brickade",3989239879},{"Brioso",1549126457},{"Bruiser",668439077},{"Bruiser2",2600885406},{"Bruiser3",2252616474},{"Brutus",2139203625},{"Brutus2",2403970600},{"Brutus3",2038858402},{"Btype",117401876},{"Btype2",3463132580},{"Btype3",3692679425},{"Buccaneer",3612755468},{"Buccaneer2",3281516360},{"Buffalo",3990165190},{"Buffalo2",736902334},{"Buffalo3",237764926},{"Bulldozer",1886712733},{"Bullet",2598821281},{"Burrito",2948279460},{"Burrito2",3387490166},{"Burrito3",2551651283},{"Burrito4",893081117},{"Burrito5",1132262048},{"Bus",3581397346},{"Buzzard",788747387},{"Buzzard2",745926877},{"Cablecar",3334677549},{"Caddy",1147287684},{"Caddy2",3757070668},{"Caddy3",3525819835},{"Camper",1876516712},{"Caracara",1254014755},{"Caracara2",2945871676},{"Carbonizzare",2072687711},{"Carbonrs",11251904},{"Cargobob",4244420235},{"Cargobob2",1621617168},{"Cargobob3",1394036463},{"Cargobob4",2025593404},{"Cargoplane",368211810},{"Casco",941800958},{"Cavalcade",2006918058},{"Cavalcade2",3505073125},{"Cerberus",3493417227},{"Cerberus2",679453769},{"Cerberus3",1909700336},{"Cheburek",3306466016},{"Cheetah",2983812512},{"Cheetah2",223240013},{"Chernobog",3602674979},{"Chimera",6774487},{"Chino",349605904},{"Chino2",2933279331},{"Cliffhanger",390201602},{"Clique",2728360112},{"Club",2196012677},{"Coach",2222034228},{"Cog55",906642318},{"Cog552",704435172},{"Cogcabrio",330661258},{"Cognoscenti",2264796000},{"Cognoscenti2",3690124666},{"Comet2",3249425686},{"Comet3",2272483501},{"Comet4",1561920505},{"Comet5",661493923},{"Contender",683047626},{"Coquette",108773431},{"Coquette2",1011753235},{"Coquette3",784565758},{"Coquette4",2566281822},{"Cruiser",448402357},{"Crusader",321739290},{"Cuban800",3650256867},{"Cutter",3288047904},{"Cyclone",1392481335},{"Daemon",2006142190},{"Daemon2",2890830793},{"Deathbike",4267640610},{"Deathbike2",2482017624},{"Deathbike3",2920466844},{"Defiler",822018448},{"Deluxo",1483171323},{"Deveste",1591739866},{"Deviant",1279262537},{"Diablous",4055125828},{"Diablous2",1790834270},{"Dilettante",3164157193},{"Dilettante2",1682114128},{"Dinghy",1033245328},{"Dinghy2",276773164},{"Dinghy3",509498602},{"Dinghy4",867467158},{"Dloader",1770332643},{"Docktrailer",2154757102},{"Docktug",3410276810},{"Dodo",3393804037},{"Dominator",80636076},{"Dominator2",3379262425},{"Dominator3",3308022675},{"Dominator4",3606777648},{"Dominator5",2919906639},{"Dominator6",3001042683},{"Double",2623969160},{"Drafter",686471183},{"Dubsta",1177543287},{"Dubsta2",3900892662},{"Dubsta3",3057713523},{"Dukes",723973206},{"Dukes2",3968823444},{"Dukes3",2134119907},{"Dump",2164484578},{"Dune",2633113103},{"Dune2",534258863},{"Dune3",1897744184},{"Dune4",3467805257},{"Dune5",3982671785},{"Duster",970356638},{"Dynasty",310284501},{"Elegy",196747873},{"Elegy2",3728579874},{"Ellie",3027423925},{"Emerus",1323778901},{"Emperor",3609690755},{"Emperor2",2411965148},{"Emperor3",3053254478},{"Enduro",1753414259},{"Entity2",2174267100},{"Entityxf",3003014393},{"Esskey",2035069708},{"Everon",2538945576},{"Exemplar",4289813342},{"F620",3703357000},{"Faction",2175389151},{"Faction2",2504420315},{"Faction3",2255212070},{"Fagaloa",1617472902},{"Faggio",2452219115},{"Faggio2",55628203},{"Faggio3",3005788552},{"Fbi",1127131465},{"Fbi2",2647026068},{"Fcr",627535535},{"Fcr2",3537231886},{"Felon",3903372712},{"Felon2",4205676014},{"Feltzer2",2299640309},{"Feltzer3",2728226064},{"Firetruk",1938952078},{"Fixter",3458454463},{"Flashgt",3035832600},{"Flatbed",1353720154},{"Fmj",1426219628},{"Forklift",1491375716},{"Formula",340154634},{"Formula2",2334210311},{"Fq2",3157435195},{"Freecrawler",4240635011},{"Freight",1030400667},{"Freightcar",184361638},{"Freightcont1",920453016},{"Freightcont2",240201337},{"Freightgrain",642617954},{"Freighttrailer",3517691494},{"Frogger",744705981},{"Frogger2",1949211328},{"Fugitive",1909141499},{"Furia",960812448},{"Furoregt",3205927392},{"Fusilade",499169875},{"Futo",2016857647},{"Gargoyle",741090084},{"Gauntlet",2494797253},{"Gauntlet2",349315417},{"Gauntlet3",722226637},{"Gauntlet4",1934384720},{"Gauntlet5",2172320429},{"Gb200",1909189272},{"Gburrito",2549763894},{"Gburrito2",296357396},{"Glendale",75131841},{"Glendale2",3381377750},{"Gp1",1234311532},{"Graintrailer",1019737494},{"Granger",2519238556},{"Gresley",2751205197},{"Gt500",2215179066},{"Guardian",2186977100},{"Habanero",884422927},{"Hakuchou",1265391242},{"Hakuchou2",4039289119},{"Halftrack",4262731174},{"Handler",444583674},{"Hauler",1518533038},{"Hauler2",387748548},{"Havok",2310691317},{"Hellion",3932816511},{"Hermes",15219735},{"Hexer",301427732},{"Hotknife",37348240},{"Hotring",1115909093},{"Howard",3287439187},{"Hunter",4252008158},{"Huntley",486987393},{"Hustler",600450546},{"Hydra",970385471},{"Imorgon",3162245632},{"Impaler",2198276962},{"Impaler2",1009171724},{"Impaler3",2370166601},{"Impaler4",2550461639},{"Imperator",444994115},{"Imperator2",1637620610},{"Imperator3",3539435063},{"Infernus",418536135},{"Infernus2",2889029532},{"Ingot",3005245074},{"Innovation",4135840458},{"Insurgent",2434067162},{"Insurgent2",2071877360},{"Insurgent3",2370534026},{"Intruder",886934177},{"Issi2",3117103977},{"Issi3",931280609},{"Issi4",628003514},{"Issi5",1537277726},{"Issi6",1239571361},{"Issi7",1854776567},{"Italigtb",2246633323},{"Italigtb2",3812247419},{"Italigto",3963499524},{"Jackal",3670438162},{"Jb700",1051415893},{"Jb7002",394110044},{"Jester",2997294755},{"Jester2",3188613414},{"Jester3",4080061290},{"Jet",1058115860},{"Jetmax",861409633},{"Journey",4174679674},{"Jugular",4086055493},{"Kalahari",92612664},{"Kamacho",4173521127},{"Kanjo",409049982},{"Khamelion",544021352},{"Khanjali",2859440138},{"Komoda",3460613305},{"Krieger",3630826055},{"Kuruma",2922118804},{"Kuruma2",410882957},{"Landstalker",1269098716},{"Landstalker2",3456868130},{"Lazer",3013282534},{"Le7b",3062131285},{"Lectro",640818791},{"Lguard",469291905},{"Limo2",4180339789},{"Locust",3353694737},{"Lurcher",2068293287},{"Luxor",621481054},{"Luxor2",3080673438},{"Lynx",482197771},{"Mamba",2634021974},{"Mammatus",2548391185},{"Manana",2170765704},{"Manana2",1717532765},{"Manchez",2771538552},{"Marquis",3251507587},{"Marshall",1233534620},{"Massacro",4152024626},{"Massacro2",3663206819},{"Maverick",2634305738},{"Menacer",2044532910},{"Mesa",914654722},{"Mesa2",3546958660},{"Mesa3",2230595153},{"Metrotrain",868868440},{"Michelli",1046206681},{"Microlight",2531412055},{"Miljet",165154707},{"Minitank",3040635986},{"Minivan",3984502180},{"Minivan2",3168702960},{"Mixer",3510150843},{"Mixer2",475220373},{"Mogul",3545667823},{"Molotok",1565978651},{"Monroe",3861591579},{"Monster",3449006043},{"Monster3",1721676810},{"Monster4",840387324},{"Monster5",3579220348},{"Moonbeam",525509695},{"Moonbeam2",1896491931},{"Mower",1783355638},{"Mule",904750859},{"Mule2",3244501995},{"Mule3",2242229361},{"Mule4",1945374990},{"Nebula",3412338231},{"Nemesis",3660088182},{"Neo",2674840994},{"Neon",2445973230},{"Nero",1034187331},{"Nero2",1093792632},{"Nightblade",2688780135},{"Nightshade",2351681756},{"Nightshark",433954513},{"Nimbus",2999939664},{"Ninef",1032823388},{"Ninef2",2833484545},{"Nokota",1036591958},{"Novak",2465530446},{"Omnis",3517794615},{"Openwheel1",1492612435},{"Openwheel2",1181339704},{"Oppressor",884483972},{"Oppressor2",2069146067},{"Oracle",1348744438},{"Oracle2",3783366066},{"Osiris",1987142870},{"Outlaw",408825843},{"Packer",569305213},{"Panto",3863274624},{"Paradise",1488164764},{"Paragon",3847255899},{"Paragon2",1416466158},{"Pariah",867799010},{"Patriot",3486509883},{"Patriot2",3874056184},{"Pbus",2287941233},{"Pbus2",345756458},{"Pcj",3385765638},{"Penetrator",2536829930},{"Penumbra",3917501776},{"Penumbra2",3663644634},{"Peyote",1830407356},{"Peyote2",2490551588},{"Peyote3",1107404867},{"Pfister811",2465164804},{"Phantom",2157618379},{"Phantom2",2645431192},{"Phantom3",177270108},{"Phoenix",2199527893},{"Picador",1507916787},{"Pigalle",1078682497},{"Police",2046537925},{"Police2",2667966721},{"Police3",1912215274},{"Police4",2321795001},{"Policeb",4260343491},{"Policeold1",2758042359},{"Policeold2",2515846680},{"Policet",456714581},{"Polmav",353883353},{"Pony",4175309224},{"Pony2",943752001},{"Pounder",2112052861},{"Pounder2",1653666139},{"Prairie",2844316578},{"Pranger",741586030},{"Predator",3806844075},{"Premier",2411098011},{"Primo",3144368207},{"Primo2",2254540506},{"Proptrailer",356391690},{"Prototipo",2123327359},{"Pyro",2908775872},{"Radi",2643899483},{"Raiden",2765724541},{"Raketrailer",390902130},{"Rallytruck",2191146052},{"Rancherxl",1645267888},{"Rancherxl2",1933662059},{"Rapidgt",2360515092},{"Rapidgt2",1737773231},{"Rapidgt3",2049897956},{"Raptor",3620039993},{"Ratbike",1873600305},{"Ratloader",3627815886},{"Ratloader2",3705788919},{"Rcbandito",4008920556},{"Reaper",234062309},{"Rebel",3087195462},{"Rebel2",2249373259},{"Rebla",83136452},{"Regina",4280472072},{"Rentalbus",3196165219},{"Retinue",1841130506},{"Retinue2",2031587082},{"Revolter",3884762073},{"Rhapsody",841808271},{"Rhino",782665360},{"Riata",2762269779},{"Riot",3089277354},{"Riot2",2601952180},{"Ripley",3448987385},{"Rocoto",2136773105},{"Rogue",3319621991},{"Romero",627094268},{"Rrocket",916547552},{"Rubble",2589662668},{"Ruffian",3401388520},{"Ruiner",4067225593},{"Ruiner2",941494461},{"Ruiner3",777714999},{"Rumpo",1162065741},{"Rumpo2",2518351607},{"Rumpo3",1475773103},{"Ruston",719660200},{"S80",3970348707},{"Sabregt",2609945748},{"Sabregt2",223258115},{"Sadler",3695398481},{"Sadler2",734217681},{"Sanchez",788045382},{"Sanchez2",2841686334},{"Sanctus",1491277511},{"Sandking",3105951696},{"Sandking2",989381445},{"Savage",4212341271},{"Savestra",903794909},{"Sc1",1352136073},{"Scarab",3147997943},{"Scarab2",1542143200},{"Scarab3",3715219435},{"Schafter2",3039514899},{"Schafter3",2809443750},{"Schafter4",1489967196},{"Schafter5",3406724313},{"Schafter6",1922255844},{"Schlagen",3787471536},{"Schwarzer",3548084598},{"Scorcher",4108429845},{"Scramjet",3656405053},{"Scrap",2594165727},{"Seabreeze",3902291871},{"Seashark",3264692260},{"Seashark2",3678636260},{"Seashark3",3983945033},{"Seasparrow",3568198617},{"Seminole",1221512915},{"Seminole2",2484160806},{"Sentinel",1349725314},{"Sentinel2",873639469},{"Sentinel3",1104234922},{"Serrano",1337041428},{"Seven70",2537130571},{"Shamal",3080461301},{"Sheava",819197656},{"Sheriff",2611638396},{"Sheriff2",1922257928},{"Shotaro",3889340782},{"Skylift",1044954915},{"Slamvan",729783779},{"Slamvan2",833469436},{"Slamvan3",1119641113},{"Slamvan4",2233918197},{"Slamvan5",373261600},{"Slamvan6",1742022738},{"Sovereign",743478836},{"Specter",1886268224},{"Specter2",1074745671},{"Speeder",231083307},{"Speeder2",437538602},{"Speedo",3484649228},{"Speedo2",728614474},{"Speedo4",219613597},{"Squalo",400514754},{"Stafford",321186144},{"Stalion",1923400478},{"Stalion2",3893323758},{"Stanier",2817386317},{"Starling",2594093022},{"Stinger",1545842587},{"Stingergt",2196019706},{"Stockade",1747439474},{"Stockade3",4080511798},{"Stratum",1723137093},{"Streiter",1741861769},{"Stretch",2333339779},{"Strikeforce",1692272545},{"Stromberg",886810209},{"Stryder",301304410},{"Stunt",2172210288},{"Submersible",771711535},{"Submersible2",3228633070},{"Sugoi",987469656},{"Sultan",970598228},{"Sultan2",872704284},{"Sultanrs",3999278268},{"Suntrap",4012021193},{"Superd",1123216662},{"Supervolito",710198397},{"Supervolito2",2623428164},{"Surano",384071873},{"Surfer",699456151},{"Surfer2",2983726598},{"Surge",2400073108},{"Swift",3955379698},{"Swift2",1075432268},{"Swinger",500482303},{"T20",1663218586},{"Taco",1951180813},{"Tailgater",3286105550},{"Taipan",3160260734},{"Tampa",972671128},{"Tampa2",3223586949},{"Tampa3",3084515313},{"Tanker",3564062519},{"Tanker2",1956216962},{"Tankercar",586013744},{"Taxi",3338918751},{"Technical",2198148358},{"Technical2",1180875963},{"Technical3",1356124575},{"Tempesta",272929391},{"Terbyte",2306538597},{"Tezeract",1031562256},{"Thrax",1044193113},{"Thrust",1836027715},{"Thruster",1489874736},{"Tigon",2936769864},{"Tiptruck",48339065},{"Tiptruck2",3347205726},{"Titan",1981688531},{"Torero",1504306544},{"Tornado",464687292},{"Tornado2",1531094468},{"Tornado3",1762279763},{"Tornado4",2261744861},{"Tornado5",2497353967},{"Tornado6",2736567667},{"Toro",1070967343},{"Toro2",908897389},{"Toros",3126015148},{"Tourbus",1941029835},{"Towtruck",2971866336},{"Towtruck2",3852654278},{"Tr2",2078290630},{"Tr3",1784254509},{"Tr4",2091594960},{"Tractor",1641462412},{"Tractor2",2218488798},{"Tractor3",1445631933},{"Trailerlarge",1502869817},{"Trailerlogs",2016027501},{"Trailers",3417488910},{"Trailers2",2715434129},{"Trailers3",2236089197},{"Trailers4",3194418602},{"Trailersmall",712162987},{"Trailersmall2",2413121211},{"Trash",1917016601},{"Trash2",3039269212},{"Trflat",2942498482},{"Tribike",1127861609},{"Tribike2",3061159916},{"Tribike3",3894672200},{"Trophytruck",101905590},{"Trophytruck2",3631668194},{"Tropic",290013743},{"Tropic2",1448677353},{"Tropos",1887331236},{"Tug",2194326579},{"Tula",1043222410},{"Tulip",1456744817},{"Turismo2",3312836369},{"Turismor",408192225},{"Tvtrailer",2524324030},{"Tyrant",3918533058},{"Tyrus",2067820283},{"Utillitruck",516990260},{"Utillitruck2",887537515},{"Utillitruck3",2132890591},{"Vacca",338562499},{"Vader",4154065143},{"Vagner",1939284556},{"Vagrant",740289177},{"Valkyrie",2694714877},{"Valkyrie2",1543134283},{"Vamos",4245851645},{"Velum",2621610858},{"Velum2",1077420264},{"Verlierer2",1102544804},{"Vestra",1341619767},{"Vigero",3469130167},{"Vigilante",3052358707},{"Vindicator",2941886209},{"Virgo",3796912450},{"Virgo2",3395457658},{"Virgo3",16646064},{"Viseris",3903371924},{"Visione",3296789504},{"Volatol",447548909},{"Volatus",2449479409},{"Voltic",2672523198},{"Voltic2",989294410},{"Voodoo",2006667053},{"Voodoo2",523724515},{"Vortex",3685342204},{"Vstr",1456336509},{"Warrener",1373123368},{"Washington",1777363799},{"Wastelander",2382949506},{"Windsor",1581459400},{"Windsor2",2364918497},{"Wolfsbane",3676349299},{"Xa21",917809321},{"Xls",1203490606},{"Xls2",3862958888},{"Yosemite",1871995513},{"Yosemite2",1693751655},{"Yosemite3",67753863},{"Youga",65402552},{"Youga2",1026149675},{"Youga3",1802742206},{"Z190",838982985},{"Zentorno",2891838741},{"Zhaba",1284356689},{"Zion",3172678083},{"Zion2",3101863448},{"Zion3",1862507111},{"Zombiea",3285698347},{"Zombieb",3724934023},{"Zorrusso",3612858749},{"Zr380",540101442},{"Zr3802",3188846534},{"Zr3803",2816263004},{"Ztype",758895617},{"Alkonost",3929093893},{"Winky",4084658662},{"Annhiliator2",295054921},{"Toreador",1455990255},{"Longfin",1861786828},{"Vetir",2014313426},{"Italirsx",3145241962},{"Weevil",1644055914},{"Veto",3437611258},{"Veto2",2802050217},{"Verus",298565713},{"Slamtruck",3249056020},{"Manchez2",1086534307},{"Brioso2",1429622905},{"Dingy5",3314393930},{"Squaddie",4192631813},{"Patrolboat",4018222598},{"Avisa",2588363614},{"Seasparrow2",1229411063},{"Seasparrow3",1593933419},{"Kosatka",1336872304}
+}
+function FindVehicleName(Hash)
+    if not Hash or Hash==0 then return false end
+    for k,v in pairs(tbl_Vehicles) do
+        if tonumber(Hash)==tonumber(v[2]) then return v[1] end
+    end
+    return false
+end
+function GetVehicleSlots()
+    tbl_GSV={}
+    local max_slots=GG('i',1323678)
+    for i=0,max_slots,1 do
+        local hash=GG('i',1323678+1+(i*141)+66)
+        local name=FindVehicleName(hash)
+        if name then
+            table.insert(tbl_GSV, {i,name,hash,GG('s',1323678+1+(i*141)+1)})
+        end
+    end
+end
+
+-- Mini Garage Form
+function MiniGarageMod()
+    if GarageForm == nil then
+    GarageForm=createForm(true)
+    TCOMP(GarageForm,{Caption='Mini Garage Mod',Width=290,Height=120,Position='poMainFormCenter',BorderStyle='bsToolWindow',Align='alNone',Visible=true,Color=0x000000})
+    local CEComboBox1=createComboBox(GarageForm)
+    TCOMP(CEComboBox1,{Left=10,Top=10,Width=190,Height=33,DropDownCount=20,Align='alNone',Enabled=true,Visible=true,Anchors='[akTop,akLeft]',BidiMode='bdLeftToRight',CharCase='ecNormal',Color=536870912,Style="csDropDownList"})
+    CEComboBox1.Items.clear()
+    CEComboBox1.items.add("Garage Vehicle List")
+    TCOMP(CEComboBox1,{Text="Garage Vehicle List"})
+    CEComboBox1.OnDropDown=function()
+        CEComboBox1.Items.clear()
+        CEComboBox1.items.add("Garage Vehicle List")
+        GetVehicleSlots()
+        for k,v in pairs(tbl_GSV) do
+            CEComboBox1.items.add(string.format('[%i] %s (%s)',v[1],v[2],v[4]))
+        end
+        CEComboBox1.ItemIndex=0
+    end
+    local CEButton1=createButton(GarageForm)
+    TCOMP(CEButton1,{Caption='Request',Left=205,Top=10,Width=75,Height=33,Enabled=true,Visible=true,Anchors='[akTop,akLeft]',BidiMode='bdLeftToRight'})
+    CEButton1.OnClick=function()
+        local id=CEComboBox1.ItemIndex
+        if id==-1 or id==0 then return end
+        SG('i',2540384+962,tbl_GSV[id][1])
+        SG('i',2540384+959,1)
+        Sleep(700)
+        SG('i',2409291+8,1)
+    end
+    local CEComboBox2=createComboBox(GarageForm)
+    TCOMP(CEComboBox2,{Left=10,Top=45,Width=190,Height=33,DropDownCount=20,Align='alNone',Enabled=true,Visible=true,Anchors='[akTop,akLeft]',BidiMode='bdLeftToRight',CharCase='ecNormal',Color=536870912,Style="csDropDownList"})
+    CEComboBox2.items.add("Vehicle List")
+    for k,v in pairs(tbl_Vehicles) do CEComboBox2.items.add(v[1]) end
+    CEComboBox2.ItemIndex=0
+    local CEButton2=createButton(GarageForm)
+    TCOMP(CEButton2,{Caption='Spawn',Left=205,Top=45,Width=75,Height=68,Enabled=true,Visible=true,Anchors='[akTop,akLeft]',BidiMode='bdLeftToRight'})
+    CEButton2.OnClick=function()
+        local ped_pos_x = getAddress("[[[WorldPTR]+8]+30]+50")
+        local ped_pos_y = getAddress("[[[WorldPTR]+8]+30]+54")
+        local ped_pos_z = getAddress("[[[WorldPTR]+8]+30]+58")
+        local id2=CEComboBox2.ItemIndex
+        if vehicleModel.Text == "" then
+        if id==-1 or id==0 or id2==-1 or id2==0 then return end
+        CREATE_VEHICLE(tbl_Vehicles[id2][1],ped_pos_x,ped_pos_y,ped_pos_z,0)
+        else
+        CREATE_VEHICLE(vehicleModel.Text,ped_pos_x,ped_pos_y,ped_pos_z,0)
+        vehicleModel.Text=""
+        end
+    end
+    vehicleModel=createEdit(GarageForm)
+    TCOMP(vehicleModel,{Left=10,Top=80,Width=190,Height=33,Align='alNone',Enabled=true,Visible=true,Anchors='[akTop,akLeft]',BidiMode='bdLeftToRight',CharCase='ecNormal',Color=536870912,TextHint="Model Name"})
+    GarageForm.OnClose=function() GarageForm.hide()end
+    end
+    GarageForm.Show()
+end
+
+-- Get Local Script Function
+function GetLocalScript(Name)
+	local a=getAddress('LocalScriptsPTR')
+	for i=0,52,1 do
+		local p=readPointer(readPointer(a)+(i*0x8))
+		local lc_p,lc_n=readInteger(p+0xB0),readString(p+0xD0)
+		if lc_n==nil then goto continue
+		elseif lc_n==Name and lc_p~=0 then return p+0xB0 end
+		::continue::
+	end
+	return false
+end
+
+-- Casino Things
+CTCP={} -- Casino Three Card Poker
+function CTCP.LA(Index) return readQword(getAddress('three_card_poker_ptr'))+(8*Index) end
+function CTCP.GL(Index) return readInteger(CTCP.LA(Index)) end
+function CTCP.SL(Index,Value) writeInteger(CTCP.LA(Index),Value) end
+CST={} -- Casino Slots
+function CST.LA(Index) return readQword(getAddress('casino_slots_ptr'))+(8*Index) end
+function CST.GL(Index) return readInteger(CST.LA(Index))end
+function CST.SL(Index,Value) writeInteger(CST.LA(Index),Value)end
+function CST.Set_Jackpot_On_All_Slots(ID) --// ID 0-7 need only to be set once
+	local l_address=GetLocalScript('casino_slots')
+	if not l_address then showMessage("Please go inside the casino before activating!") return end
+	unregisterSymbol('casino_slots_ptr') registerSymbol('casino_slots_ptr',l_address,true)
+	for f=0,2,1 do
+		for i=0,63,1 do CST.SL(1354+1+1+(f*65)+1+i,ID)end
+	end
+    rigged=1
+end
+function CTCP.Straight_Flush()
+	local l_address=GetLocalScript("three_card_poker")
+	if not l_address then showMessage("Please go inside the casino before activating!") return end
+	unregisterSymbol('three_card_poker_ptr') registerSymbol('three_card_poker_ptr',l_address,true)
+	local current_table=CTCP.GL(755+1+(PLAYER_ID()*9)+2)
+	local i=122+168+1+(current_table*55)+2
+	CTCP.SL(i+1,50) CTCP.SL(1846,50)  -- 1st Card
+	CTCP.SL(i+2,51) CTCP.SL(1847,51)  -- 2nd Card
+	CTCP.SL(i+3,52) CTCP.SL(1848,52)  -- 3rd Card
+end
+
+-- Business Things
+tbl_Business={--[[Meth,Weed,Cocaine,Cash,Documents]]}
+tbl_BusinessLocations={
+    {
+  {1,"Paleto Bay"},
+  {6,"El Burro Heights"},
+  {11,"Grand Senora Desert"},
+  {16,"Terminal"}
+    },
+    {
+  {2,"Mount Chiliad"},
+  {7,"Downtown Vinewood"},
+  {12,"San Chianski"},
+  {17,"Elysian Island"}
+    },
+    {
+  {3,"Paleto Bay"},
+  {8,"Morningwood"},
+  {13,"Alamo Sea"},
+  {18,"Elysian Island"}
+  },
+    {
+  {4,"Paleto Bay"},
+  {9,"Vespucci Canals"},
+  {14,"Grand Senora Desert"},
+  {19,"Cypress Flats"}
+  },
+    {
+  {5,"Paleto Bay"},
+  {10,"Textile City"},
+  {15,"Grapeseed"},
+  {20,"Elysian Island"}
+  }
+}
+
+-- Bunker Deliver
+function deliverBunker(amount,value)
+   if value == nil then
+   value= readInteger("[GTA5.exe+025F2F30]+128")
+   end
+   local cargo= readInteger("[[GlobalPTR-128]+1180]+37C0")
+   local total= amount*cargo/value
+   writeInteger("[[GlobalPTR-128]+1180]+3F68", total)
+   writeInteger("[[GlobalPTR-128]+1180]+46E0", 1)
+   writeFloat(GA(262145+21045),1)
+   SG('i',262145+21228,1)
+   SG('i',262145+21232,1)
+   SG('i',262145+21222,1)
+   SG('i',262145+21230,1)
+   SG('i',262145+21235,1)
+   SG('i',262145+21224,1)
+   sleep(300)
+   writeFloat(GA(262145+21045),1.5)
+   SG('i',262145+21228,1800000)
+   SG('i',262145+21232,900000)
+   SG('i',262145+21222,900000)
+   SG('i',262145+21230,900000)
+   SG('i',262145+21235,900000)
+   SG('i',262145+21224,900000)
+end
+</LuaScript>
+</CheatTable>
